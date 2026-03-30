@@ -17,3 +17,4 @@ All pages should have:
 ✓ Social media meta tags
 
 If you see this file on your server, the upload was successful.
+
