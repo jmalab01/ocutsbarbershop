@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCUTS BARBERSHOP</title>
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="OCUTS BARBERSHOP - Louisville's Top-Rated Barbershop">
+    <meta property="og:description" content="Welcome to Ocuts - Professional barbershop services in Louisville, KY">
+    <meta property="og:image" content="https://i.postimg.cc/0yXGwF9K/image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OCUTS BARBERSHOP">
+    <meta name="twitter:description" content="Louisville's Top-Rated Barbershop">
+    <meta name="twitter:image" content="https://i.postimg.cc/0yXGwF9K/image.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+        }
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 0;
+            z-index: 1000;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(211, 17, 17, 0.3);
+            flex-shrink: 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 30px;
+        }
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-title img {
+            height: 50px;
+            width: auto;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ffffff, #d31111);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
+            text-transform: uppercase;
+        }
+        nav {
+            display: flex;
+            gap: 5px;
+            background: transparent;
+            z-index: 2;
+            position: relative;
+            flex-shrink: 0;
+        }
+        nav a {
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
+            text-transform: uppercase;
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #d31111;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        nav a:hover {
+            background-color: rgba(211, 17, 17, 0.1);
+            color: #d31111;
+        }
+        nav a:hover::before {
+            width: 80%;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            padding: 20px;
+            width: 100%;
+            max-width: 100%;
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: black url('https://i.postimg.cc/0yXGwF9K/image.png') no-repeat center center;
+            background-size: contain;
+        }
+        
+        @keyframes logoGlow {
+            0% {
+                filter: drop-shadow(0 0 0px transparent) drop-shadow(0 0 0px transparent);
+            }
+            15% {
+                filter: drop-shadow(0 0 0px transparent) drop-shadow(0 0 0px transparent);
+            }
+            20% {
+                filter: drop-shadow(0 0 8px #ff0000) drop-shadow(0 0 15px #d31111) drop-shadow(0 0 5px rgba(255,255,255,0.4));
+            }
+            40% {
+                filter: drop-shadow(0 0 12px #ff0000) drop-shadow(0 0 22px #d31111) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+            }
+            55% {
+                filter: drop-shadow(0 0 15px #ff0000) drop-shadow(0 0 28px #d31111) drop-shadow(0 0 10px rgba(255,255,255,0.5));
+            }
+            70% {
+                filter: drop-shadow(0 0 12px #ff0000) drop-shadow(0 0 22px #d31111) drop-shadow(0 0 8px rgba(255,255,255,0.5));
+            }
+            80% {
+                filter: drop-shadow(0 0 10px #ff0000) drop-shadow(0 0 18px #d31111) drop-shadow(0 0 6px rgba(255,255,255,0.4));
+            }
+            83% {
+                filter: drop-shadow(0 0 5px #d31111) drop-shadow(0 0 10px #d31111) drop-shadow(0 0 3px rgba(255,255,255,0.3));
+            }
+            85% {
+                filter: drop-shadow(0 0 10px #ff0000) drop-shadow(0 0 18px #d31111) drop-shadow(0 0 6px rgba(255,255,255,0.4));
+            }
+            87% {
+                filter: drop-shadow(0 0 3px #d31111) drop-shadow(0 0 8px #d31111) drop-shadow(0 0 2px rgba(255,255,255,0.2));
+            }
+            89% {
+                filter: drop-shadow(0 0 8px #ff0000) drop-shadow(0 0 15px #d31111) drop-shadow(0 0 5px rgba(255,255,255,0.3));
+            }
+            91% {
+                filter: drop-shadow(0 0 2px #d31111) drop-shadow(0 0 5px #d31111);
+            }
+            93% {
+                filter: drop-shadow(0 0 6px #d31111) drop-shadow(0 0 12px #d31111) drop-shadow(0 0 3px rgba(255,255,255,0.2));
+            }
+            95% {
+                filter: drop-shadow(0 0 1px #d31111) drop-shadow(0 0 3px #d31111);
+            }
+            97% {
+                filter: drop-shadow(0 0 4px #d31111) drop-shadow(0 0 8px #d31111);
+            }
+            98% {
+                filter: drop-shadow(0 0 0px transparent) drop-shadow(0 0 0px transparent);
+            }
+            100% {
+                filter: drop-shadow(0 0 0px transparent) drop-shadow(0 0 0px transparent);
+            }
+        }
+        
+        @keyframes snip {
+            0% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            15% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            18% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            21% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            24% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            27% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            30% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            33% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            36% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            39% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            42% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            45% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            48% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            51% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            54% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            57% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            60% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            63% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            66% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            69% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            72% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            75% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            78% { 
+                transform: rotate(-22deg) translateY(-4px); 
+            }
+            80% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            81% { 
+                transform: rotate(-8deg) translateX(-2px) translateY(-1px); 
+            }
+            82% { 
+                transform: rotate(6deg) translateX(2px) translateY(-1px); 
+            }
+            83% { 
+                transform: rotate(-6deg) translateX(-1px); 
+            }
+            84% { 
+                transform: rotate(4deg) translateX(1px); 
+            }
+            85% { 
+                transform: rotate(-4deg) translateX(-1px); 
+            }
+            86% { 
+                transform: rotate(3deg) translateX(1px); 
+            }
+            87% { 
+                transform: rotate(-3deg) translateX(-1px); 
+            }
+            88% { 
+                transform: rotate(2deg); 
+            }
+            89% { 
+                transform: rotate(-2deg); 
+            }
+            90% { 
+                transform: rotate(1deg); 
+            }
+            91% { 
+                transform: rotate(-1deg); 
+            }
+            92% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+            100% { 
+                transform: rotate(0deg) translateY(0); 
+            }
+        }
+        
+        .logo-wrap {
+            position: relative;
+            width: 450px;
+            max-width: 85%;
+            margin: 0 auto 30px;
+        }
+        
+        .logo-base {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: logoGlow 6s ease-in-out infinite;
+        }
+        
+        .scissors {
+            position: absolute;
+            left: 23%;
+            top: 27%;
+            width: 43%;
+            height: auto;
+            transform-origin: 50% 50%;
+            animation: snip 6s ease-in-out infinite;
+        }
+        
+        .logo-wrap:hover .scissors {
+            animation-play-state: paused;
+        }
+
+        .slogan {
+            text-align: center;
+            font-size: 1.5rem;
+            color: white;
+            background-color: black;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+        
+        @keyframes sloganGlow {
+            0% {
+                text-shadow: 0 0 3px #ffffff, 0 0 5px #d31111;
+            }
+            50% {
+                text-shadow: 0 0 8px #ffffff, 0 0 15px #ff0000, 0 0 20px #d31111;
+            }
+            100% {
+                text-shadow: 0 0 3px #ffffff, 0 0 5px #d31111;
+            }
+        }
+        .walk-in-text {
+            text-align: center;
+            font-size: 1.3rem;
+            color: white;
+            padding: 10px;
+            margin: 15px auto;
+        }
+        .book-me-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .book-me-button a {
+            background-color: #d31111;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .book-me-button a:hover {
+            background-color: #000000;
+        }
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            z-index: 2;
+            position: relative;
+            flex-shrink: 0;
+        }
+        /* Tablet and Medium Devices */
+        @media screen and (max-width: 1024px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .image-container {
+                height: 350px;
+            }
+            nav a {
+                padding: 12px 18px;
+                font-size: 1rem;
+            }
+        }
+        /* Mobile Landscape and Small Tablets */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            .logo-title {
+                justify-content: center;
+            }
+            .logo-title img {
+                height: 40px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            nav a {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            .image-container {
+                height: 280px;
+                background-size: cover;
+            }
+            .content {
+                padding: 15px;
+            }
+            .slogan {
+                font-size: 1.2rem;
+                padding: 15px;
+                margin-top: 15px;
+            }
+            .walk-in-text {
+                font-size: 1.1rem;
+                margin: 12px auto;
+            }
+            .book-me-button {
+                margin-top: 15px;
+            }
+            .book-me-button a {
+                padding: 12px 24px;
+                font-size: 1.1rem;
+            }
+        }
+        /* Mobile Portrait */
+        @media screen and (max-width: 480px) {
+            .header-container {
+                padding: 12px 15px;
+            }
+            .logo-title img {
+                height: 35px;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            .content {
+                padding: 12px;
+            }
+            .image-container {
+                height: 220px;
+                background-size: cover;
+            }
+            .slogan {
+                font-size: 1rem;
+                padding: 12px;
+                margin-top: 12px;
+                line-height: 1.4;
+            }
+            .walk-in-text {
+                font-size: 1rem;
+                margin: 10px auto;
+                padding: 8px;
+            }
+            .book-me-button {
+                margin-top: 12px;
+            }
+            .book-me-button a {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+        /* Extra Small Devices */
+        @media screen and (max-width: 360px) {
+            h1 {
+                font-size: 1.1rem;
+            }
+            nav a {
+                padding: 8px 6px;
+                font-size: 0.75rem;
+            }
+            .image-container {
+                height: 180px;
+            }
+            .slogan {
+                font-size: 0.9rem;
+            }
+            .walk-in-text {
+                font-size: 0.9rem;
+            }
+            .book-me-button a {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <img src="https://i.postimg.cc/JzrkP8rR/temp-Image8-UDv-Aw.avif" alt="OCUTS Logo">
+                <h1>OCUTS BARBERSHOP</h1>
+            </div>
+            <nav>
+                <a href="team.html">Team</a>
+                <a href="services.html">Bookings</a>
+                <a href="location.html">Location</a>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+        <div style="text-align: center;">
+            <div class="logo-wrap">
+                <img class="logo-base" src="https://i.postimg.cc/6qwMVzFX/82327aa4-f33c-45ac-9660-70b71a3d2f88.png" alt="OCUTS Barbershop Logo">
+                <img class="scissors" src="https://i.postimg.cc/s2sCX9DN/e865105e-bf04-4cae-b8a2-7895084fb933.png" alt="Scissors">
+            </div>
+        </div>
+        <div class="slogan">
+            Louisville’s Top-Rated Barbershop - Welcome to Ocuts. 
+        </div>
+        <div class="book-me-button">
+            <a href="services.html" target="_blank">Book with Ocuts!</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 BARBERSITE. All rights reserved to OCUTS.</p>
+    </footer>
+</body>
+</html>
