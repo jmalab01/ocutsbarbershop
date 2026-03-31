@@ -464,6 +464,82 @@
                 height: 300px;
             }
         }
+        /* Walk-In Banner */
+        .walkin-banner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px 20px;
+            margin: 20px auto 10px auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .walkin-scissors {
+            font-size: 2.2rem;
+            color: #d31111;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 8px rgba(211,17,17,0.9));
+            animation: scissorGlow 2.5s ease-in-out infinite;
+        }
+        @keyframes scissorGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(211,17,17,0.9)); }
+            50% { filter: drop-shadow(0 0 18px rgba(255,50,50,1)); }
+        }
+        .walkin-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .walkin-title {
+            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 5px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1;
+            text-shadow:
+                0 0 10px rgba(211,17,17,1),
+                0 0 20px rgba(211,17,17,0.8),
+                0 0 40px rgba(211,17,17,0.5);
+            animation: titleGlow 2.5s ease-in-out infinite;
+        }
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow:
+                    0 0 10px rgba(211,17,17,1),
+                    0 0 20px rgba(211,17,17,0.8),
+                    0 0 40px rgba(211,17,17,0.5);
+            }
+            50% {
+                text-shadow:
+                    0 0 15px rgba(255,255,255,0.9),
+                    0 0 25px rgba(211,17,17,1),
+                    0 0 50px rgba(211,17,17,0.8),
+                    0 0 80px rgba(211,17,17,0.4);
+            }
+        }
+        .walkin-sub {
+            font-size: 1rem;
+            color: #cccccc;
+            letter-spacing: 1px;
+            font-style: italic;
+            text-align: center;
+        }
+        @media (max-width: 480px) {
+            .walkin-title {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            .walkin-sub {
+                font-size: 0.85rem;
+            }
+            .walkin-scissors {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -514,6 +590,14 @@
             </div>
         </div>
         <div class="instagram-feed">
+            <div class="walkin-banner">
+                <div class="walkin-scissors">✂</div>
+                <div class="walkin-text">
+                    <span class="walkin-title">WALK-INS WELCOME</span>
+                    <span class="walkin-sub">No appointment? No problem. Come as you are.</span>
+                </div>
+                <div class="walkin-scissors">✂</div>
+            </div>
             <h2>Check Us Out!</h2>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <iframe src="https://www.instagram.com/ocuts_/embed/" width="400" height="480" style="border:none;overflow:hidden" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
