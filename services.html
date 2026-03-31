@@ -477,11 +477,12 @@
             box-sizing: border-box;
         }
         .walkin-scissors {
-            font-size: 2.2rem;
-            color: #d31111;
             flex-shrink: 0;
             filter: drop-shadow(0 0 8px rgba(211,17,17,0.9));
             animation: scissorGlow 2.5s ease-in-out infinite;
+        }
+        .walkin-scissors svg {
+            display: block;
         }
         @keyframes scissorGlow {
             0%, 100% { filter: drop-shadow(0 0 8px rgba(211,17,17,0.9)); }
@@ -536,8 +537,9 @@
             .walkin-sub {
                 font-size: 0.85rem;
             }
-            .walkin-scissors {
-                font-size: 1.6rem;
+            .walkin-scissors svg {
+                width: 26px;
+                height: 26px;
             }
         }
     </style>
@@ -591,12 +593,16 @@
         </div>
         <div class="instagram-feed">
             <div class="walkin-banner">
-                <div class="walkin-scissors">✂</div>
+                <div class="walkin-scissors">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d31111" width="36" height="36"><path d="M12 14.121l-2.829 2.829a4 4 0 1 1-1.414-1.414L10.586 12 7.757 9.172a4 4 0 1 1 1.414-1.414L12 10.586l2.829-2.828a4 4 0 1 1 1.414 1.414L13.414 12l2.829 2.829a4 4 0 1 1-1.414 1.414L12 14.121zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                </div>
                 <div class="walkin-text">
                     <span class="walkin-title">WALK-INS WELCOME</span>
                     <span class="walkin-sub">No appointment? No problem. Come as you are.</span>
                 </div>
-                <div class="walkin-scissors">✂</div>
+                <div class="walkin-scissors">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d31111" width="36" height="36"><path d="M12 14.121l-2.829 2.829a4 4 0 1 1-1.414-1.414L10.586 12 7.757 9.172a4 4 0 1 1 1.414-1.414L12 10.586l2.829-2.828a4 4 0 1 1 1.414 1.414L13.414 12l2.829 2.829a4 4 0 1 1-1.414 1.414L12 14.121zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                </div>
             </div>
             <h2>Check Us Out!</h2>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
