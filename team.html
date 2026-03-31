@@ -545,15 +545,16 @@
         /* Walk-In Banner */
         .walkin-banner {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 50%, #0d0d0d 100%);
             border: 2px solid #d31111;
-            border-radius: 16px;
-            padding: 22px 20px;
+            border-radius: 20px;
+            padding: 40px 30px;
             margin: 30px auto 10px auto;
-            max-width: 700px;
+            max-width: 900px;
             width: calc(100% - 30px);
             position: relative;
             overflow: hidden;
@@ -597,8 +598,13 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+        .walkin-scissors-row {
+            display: flex;
+            gap: 18px;
+            z-index: 1;
+        }
         .walkin-scissors {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: #d31111;
             filter: drop-shadow(0 0 8px rgba(211,17,17,0.9));
             animation: scissorGlow 2.5s ease-in-out infinite;
@@ -611,19 +617,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
             position: relative;
             z-index: 1;
-            flex: 1;
-            min-width: 0;
+            width: 100%;
         }
         .walkin-title {
             font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(1.4rem, 5vw, 2.2rem);
-            letter-spacing: 3px;
+            font-size: 3.5rem;
+            letter-spacing: 6px;
             color: #ffffff;
             text-align: center;
-            word-break: keep-all;
+            line-height: 1;
             text-shadow:
                 0 0 10px rgba(211,17,17,1),
                 0 0 20px rgba(211,17,17,0.8),
@@ -646,20 +651,23 @@
             }
         }
         .walkin-sub {
-            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            font-size: 1.1rem;
             color: #cccccc;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
             font-style: italic;
             text-align: center;
         }
-        @media (max-width: 600px) {
-            .walkin-banner {
-                flex-direction: column;
-                gap: 8px;
-                padding: 18px 15px;
+        @media (max-width: 480px) {
+            .walkin-title {
+                font-size: 2.4rem;
+                letter-spacing: 3px;
+            }
+            .walkin-sub {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
             }
             .walkin-scissors {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -717,12 +725,20 @@
             <img src="https://i.postimg.cc/rphRKjD5/temp-Imager-Bg5ep.avif" alt="Barbershop View 2">
         </div>
     <div class="walkin-banner">
-        <div class="walkin-scissors">✂</div>
+        <div class="walkin-scissors-row">
+            <div class="walkin-scissors">✂</div>
+            <div class="walkin-scissors">✂</div>
+            <div class="walkin-scissors">✂</div>
+        </div>
         <div class="walkin-text">
             <span class="walkin-title">WALK-INS WELCOME</span>
             <span class="walkin-sub">No appointment? No problem. Come as you are.</span>
         </div>
-        <div class="walkin-scissors">✂</div>
+        <div class="walkin-scissors-row">
+            <div class="walkin-scissors">✂</div>
+            <div class="walkin-scissors">✂</div>
+            <div class="walkin-scissors">✂</div>
+        </div>
     </div>
     <button class="view-all-btn" onclick="window.location.href='services.html'">Book With Us</button>
     </div>
