@@ -548,58 +548,14 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 25px;
-            background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 50%, #0d0d0d 100%);
-            border: 2px solid #d31111;
-            border-radius: 20px;
-            padding: 40px 40px;
-            margin: 30px auto 10px auto;
-            max-width: 900px;
-            width: calc(100% - 30px);
-            position: relative;
-            overflow: hidden;
+            gap: 15px;
+            padding: 30px 20px;
+            margin: 20px auto 10px auto;
+            width: 100%;
             box-sizing: border-box;
-            box-shadow:
-                0 0 20px rgba(211, 17, 17, 0.5),
-                0 0 40px rgba(211, 17, 17, 0.3),
-                0 0 60px rgba(211, 17, 17, 0.15),
-                inset 0 0 30px rgba(211, 17, 17, 0.05);
-            animation: bannerPulse 2.5s ease-in-out infinite;
-        }
-        @keyframes bannerPulse {
-            0%, 100% {
-                box-shadow:
-                    0 0 20px rgba(211, 17, 17, 0.5),
-                    0 0 40px rgba(211, 17, 17, 0.3),
-                    0 0 60px rgba(211, 17, 17, 0.15),
-                    inset 0 0 30px rgba(211, 17, 17, 0.05);
-                border-color: #d31111;
-            }
-            50% {
-                box-shadow:
-                    0 0 30px rgba(211, 17, 17, 0.9),
-                    0 0 60px rgba(211, 17, 17, 0.6),
-                    0 0 90px rgba(211, 17, 17, 0.3),
-                    inset 0 0 40px rgba(211, 17, 17, 0.1);
-                border-color: #ff2222;
-            }
-        }
-        .walkin-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(211,17,17,0.08) 0%, transparent 60%);
-            animation: rotateSweep 6s linear infinite;
-        }
-        @keyframes rotateSweep {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
         .walkin-scissors {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: #d31111;
             flex-shrink: 0;
             filter: drop-shadow(0 0 8px rgba(211,17,17,0.9));
@@ -613,15 +569,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-            width: 100%;
+            gap: 8px;
         }
         .walkin-title {
             font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: 3.5rem;
-            letter-spacing: 6px;
+            font-size: 3rem;
+            letter-spacing: 5px;
             color: #ffffff;
             text-align: center;
             line-height: 1;
@@ -647,23 +600,22 @@
             }
         }
         .walkin-sub {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #cccccc;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             font-style: italic;
             text-align: center;
         }
         @media (max-width: 480px) {
             .walkin-title {
-                font-size: 2.4rem;
+                font-size: 2rem;
                 letter-spacing: 3px;
             }
             .walkin-sub {
-                font-size: 0.9rem;
-                letter-spacing: 1px;
+                font-size: 0.85rem;
             }
             .walkin-scissors {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
         }
     </style>
