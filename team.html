@@ -551,12 +551,13 @@
             background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 50%, #0d0d0d 100%);
             border: 2px solid #d31111;
             border-radius: 16px;
-            padding: 28px 40px;
-            margin: 30px 15px 10px 15px;
-            max-width: 800px;
+            padding: 22px 30px;
+            margin: 30px auto 10px auto;
+            max-width: 700px;
             width: calc(100% - 30px);
             position: relative;
             overflow: hidden;
+            box-sizing: border-box;
             box-shadow:
                 0 0 20px rgba(211, 17, 17, 0.5),
                 0 0 40px rgba(211, 17, 17, 0.3),
@@ -616,9 +617,10 @@
         }
         .walkin-title {
             font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: 2.4rem;
-            letter-spacing: 4px;
+            font-size: 2rem;
+            letter-spacing: 3px;
             color: #ffffff;
+            white-space: nowrap;
             text-shadow:
                 0 0 10px rgba(211,17,17,1),
                 0 0 20px rgba(211,17,17,0.8),
@@ -641,24 +643,27 @@
             }
         }
         .walkin-sub {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: #cccccc;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             font-style: italic;
+            white-space: nowrap;
         }
         @media (max-width: 600px) {
             .walkin-banner {
                 flex-direction: column;
                 gap: 10px;
-                padding: 20px;
+                padding: 18px 15px;
             }
             .walkin-title {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
                 letter-spacing: 2px;
+                white-space: nowrap;
             }
             .walkin-sub {
-                font-size: 0.82rem;
+                font-size: 0.75rem;
                 text-align: center;
+                white-space: normal;
             }
         }
     </style>
