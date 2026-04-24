@@ -560,5 +560,94 @@
     <footer>
         <p>&copy; 2024 BARBERSITE. All rights reserved to OCUTS.</p>
     </footer>
+
+    <!-- Hiring Popup -->
+    <div id="hiringPopup" style="
+        display:none;
+        position:fixed;inset:0;
+        background:rgba(0,0,0,0.88);
+        z-index:9999;
+        align-items:center;
+        justify-content:center;
+        padding:16px;
+    ">
+        <div style="
+            background:#141414;
+            border-radius:14px;
+            box-shadow:0 0 0 2px #cc1414, 0 8px 40px rgba(200,20,20,0.35);
+            max-width:680px;
+            width:100%;
+            overflow:hidden;
+            position:relative;
+        ">
+            <button onclick="document.getElementById('hiringPopup').style.display='none'" style="
+                position:absolute;top:8px;right:12px;
+                background:none;border:none;color:#fff;
+                font-size:1.4rem;cursor:pointer;line-height:1;z-index:10;
+            ">&times;</button>
+            <!-- Main Row -->
+            <div style="display:flex;flex-direction:row;align-items:stretch;height:260px;" id="hiringPopupRow">
+                <!-- Flyer Frame -->
+                <div style="
+                    flex:0 0 38%;width:38%;background:#0d0d0d;
+                    position:relative;padding:8px;box-sizing:border-box;
+                    display:flex;align-items:center;justify-content:center;
+                ">
+                    <span style="position:absolute;top:5px;left:5px;width:16px;height:16px;border-top:2px solid #cc1414;border-left:2px solid #cc1414;"></span>
+                    <span style="position:absolute;top:5px;right:5px;width:16px;height:16px;border-top:2px solid #cc1414;border-right:2px solid #cc1414;"></span>
+                    <span style="position:absolute;bottom:5px;left:5px;width:16px;height:16px;border-bottom:2px solid #cc1414;border-left:2px solid #cc1414;"></span>
+                    <span style="position:absolute;bottom:5px;right:5px;width:16px;height:16px;border-bottom:2px solid #cc1414;border-right:2px solid #cc1414;"></span>
+                    <img src="https://i.postimg.cc/9QZ8XyPX/Screenshot-2026-04-24-at-4-28-23-PM.png" alt="Now Hiring" style="width:100%;height:100%;object-fit:contain;display:block;">
+                </div>
+                <!-- Body -->
+                <div style="flex:1;padding:10px 16px 8px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:3px;">
+                    <span style="display:inline-block;background:#7a0c0c;color:#ffd5d5;font-family:'Bebas Neue','Anton','Impact','Arial Black',sans-serif;font-size:0.75rem;letter-spacing:2px;padding:2px 10px;border-radius:4px;">&#9986; We're Hiring</span>
+                    <h2 style="font-family:'Bebas Neue','Anton','Impact','Arial Black',sans-serif;font-size:clamp(1.3rem,3.5vw,1.9rem);letter-spacing:4px;color:#fff;margin:0;line-height:1;">NOW HIRING!</h2>
+                    <p style="font-size:0.88rem;color:#e0e0e0;margin:0;">Licensed Barbers</p>
+                    <p style="font-size:0.75rem;color:#aaa;font-style:italic;margin:0;">Come claim your chair today</p>
+                    <div style="display:flex;align-items:center;gap:6px;margin:2px 0;">
+                        <span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#cc1414,transparent);"></span>
+                        <span style="color:#cc1414;font-size:0.85rem;">✂</span>
+                        <span style="flex:1;height:1px;background:linear-gradient(90deg,#cc1414,transparent);"></span>
+                    </div>
+                    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;text-align:left;">
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Dependable</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Detail Oriented</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Cooperative</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Understanding</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Patient</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Ethical</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Social &amp; Professional</li>
+                        <li style="font-size:0.72rem;color:#ccc;"><span style="color:#cc1414;font-weight:bold;">✓ </span>Team Player</li>
+                    </ul>
+                    <p style="font-size:0.75rem;color:#ccc;margin:0;">Join the <strong style="color:#fff;">hottest barbershop in Louisville!</strong></p>
+                    <span style="display:inline-block;border:1px solid #cc1414;color:#ffd5d5;font-size:0.7rem;padding:2px 10px;border-radius:20px;margin:0 auto;">&#9733; First Week Free! &#9733;</span>
+                </div>
+            </div>
+            <!-- CTA Bar -->
+            <div style="display:flex;flex-direction:row;">
+                <div style="flex:1;background:#111;display:flex;align-items:center;justify-content:center;padding:10px 12px;">
+                    <span style="font-family:'Bebas Neue','Anton','Impact','Arial Black',sans-serif;font-size:clamp(0.75rem,1.8vw,1rem);letter-spacing:2px;color:#ccc;white-space:nowrap;">For more information — call or text</span>
+                </div>
+                <div style="background:#cc1414;padding:10px 18px;display:flex;align-items:center;justify-content:center;">
+                    <a href="tel:5025313719" style="font-family:'Bebas Neue','Anton','Impact','Arial Black',sans-serif;font-size:clamp(1rem,2.5vw,1.5rem);letter-spacing:3px;color:#fff;text-decoration:none;white-space:nowrap;">502-531-3719</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        @media (max-width: 520px) {
+            #hiringPopupRow { flex-direction: column !important; height: auto !important; }
+            #hiringPopupRow > div:first-child { width: 100% !important; flex: none !important; height: 160px; }
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('hiringPopup').style.display = 'flex';
+        });
+        document.getElementById('hiringPopup').addEventListener('click', function(e) {
+            if (e.target === this) this.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
