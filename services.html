@@ -899,17 +899,34 @@
     </div>
     <script>
         // Booking options popup logic
-        document.querySelectorAll('.view-profile-btn').forEach(btn => {
+        // Only bind to profile buttons inside .service-card so the modal's own buttons don't re-trigger handlers
+        document.querySelectorAll('.service-card .view-profile-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const name = this.dataset.name || this.getAttribute('data-name') || '';
                 const book = this.dataset.book || this.getAttribute('data-book') || '';
                 const insta = this.dataset.instagram || this.getAttribute('data-instagram') || '';
+
+                const onlineLink = document.getElementById('bookingOnline');
+                const instaLink = document.getElementById('bookingInsta');
+
+                // Reset links first to avoid showing stale hrefs
+                if (onlineLink) { onlineLink.style.display = 'none'; onlineLink.removeAttribute('href'); }
+                if (instaLink) { instaLink.style.display = 'none'; instaLink.removeAttribute('href'); }
+
                 document.getElementById('bookingTitle').textContent = name ? `Book ${name}` : 'Book';
                 document.getElementById('bookingSub').textContent = name ? `Book with ${name}` : 'Book with us';
-                const onlineLink = document.getElementById('bookingOnline');
-                if (book) { onlineLink.style.display = 'block'; onlineLink.setAttribute('href', book); } else { onlineLink.style.display = 'none'; }
-                const instaLink = document.getElementById('bookingInsta');
-                if (insta) { instaLink.style.display = 'block'; instaLink.setAttribute('href', insta); } else { instaLink.style.display = 'none'; instaLink.removeAttribute('href'); }
+
+                if (book && onlineLink) {
+                    onlineLink.style.display = 'block';
+                    onlineLink.setAttribute('href', book);
+                }
+
+                // Treat empty or whitespace-only instagram values as absent
+                if (insta && insta.toString().trim() !== '' && instaLink) {
+                    instaLink.style.display = 'block';
+                    instaLink.setAttribute('href', insta);
+                }
+
                 document.getElementById('bookingOptions').style.display = 'flex';
             });
         });
