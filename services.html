@@ -924,8 +924,24 @@
                 document.getElementById('bookingOptions').style.display = 'flex';
             });
         });
-        document.getElementById('bookingClose').addEventListener('click', function() { document.getElementById('bookingOptions').style.display = 'none'; });
-        document.getElementById('bookingOptions').addEventListener('click', function(e) { if (e.target === this) this.style.display = 'none'; });
+        const bookingOptionsEl = document.getElementById('bookingOptions');
+        function hideBookingOptions() { if (bookingOptionsEl) bookingOptionsEl.style.display = 'none'; }
+        document.getElementById('bookingClose').addEventListener('click', function() { hideBookingOptions(); });
+        document.getElementById('bookingOptions').addEventListener('click', function(e) { if (e.target === this) hideBookingOptions(); });
+
+        // If the user navigates away (opens a link) and then comes back via browser back or focus,
+        // ensure the modal is hidden so the page returns to a normal state.
+        window.addEventListener('pageshow', function(evt) {
+            // pageshow.persisted is true when coming from bfcache; hide modal in that case.
+            if (evt.persisted) hideBookingOptions();
+        });
+        window.addEventListener('focus', function() { hideBookingOptions(); });
+
+        // Also hide modal when the user clicks the external links in the modal (before navigation)
+        const onlineBtn = document.getElementById('bookingOnline');
+        const instaBtn = document.getElementById('bookingInsta');
+        if (onlineBtn) onlineBtn.addEventListener('click', hideBookingOptions);
+        if (instaBtn) instaBtn.addEventListener('click', hideBookingOptions);
     </script>
     
 </body>
