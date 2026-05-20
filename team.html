@@ -139,90 +139,22 @@
             width: 100%;
             max-width: 100%;
         }
-        .slideshow-container {
-            position: relative;
+        /* Static hero and gallery — slideshow removed per request */
+        .hero-static {
             width: 85vw;
             max-width: 900px;
-            height: 55vh;
-            min-height: 400px;
-            max-height: 600px;
+            height: auto;
             margin: 36px auto 20px auto;
-            border: 12px solid transparent;
             border-radius: 16px;
-            overflow: hidden;
-            background: 
-                linear-gradient(#111, #111) padding-box,
-                repeating-linear-gradient(
-                    45deg,
-                    #000000 0px,
-                    #000000 15px,
-                    #ffffff 15px,
-                    #ffffff 30px,
-                    #d31111 30px,
-                    #d31111 45px
-                ) border-box;
-            box-shadow: 
-                0 0 24px rgba(211, 17, 17, 0.6),
-                0 0 48px rgba(211, 17, 17, 0.3),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(180deg,#0b0b0b,#111);
+            padding: 18px;
+            box-shadow: 0 8px 40px rgba(211,17,17,0.12);
         }
-        .view-all-btn {
-            display: block;
-            margin: 18px auto 0 auto;
-            padding: 10px 28px;
-            background: #d31111;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 8px #d3111133;
-            transition: background 0.2s;
-        }
-        .view-all-btn:hover {
-            background: #a00;
-        }
-        .modal-gallery {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-gallery.active {
-            display: flex;
-        }
-        .modal-gallery-content {
-            background: #111;
-            border-radius: 16px;
-            padding: 32px 18px 18px 18px;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow: auto;
-            box-shadow: 0 0 32px #d31111cc;
-        }
-        .modal-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            padding: 10px;
-        }
-        .modal-gallery-grid img {
-            width: 100%;
-            height: 320px;
-            object-fit: contain;
-            border-radius: 10px;
-            border: 3px solid #d31111;
-            background: #111;
-            box-shadow: 0 2px 12px #d3111133;
-        }
+        .hero-static img { width: 100%; height: auto; border-radius: 12px; display:block; }
         .modal-gallery-close {
             position: absolute;
             top: 18px;
@@ -238,69 +170,7 @@
         .modal-gallery-close:hover {
             color: #d31111;
         }
-        .slide {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: opacity 0.7s ease;
-        }
-        .active-slide {
-            display: block;
-            opacity: 1;
-        }
-        .slideshow-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            border: 2px solid #d31111;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            cursor: pointer;
-            z-index: 2;
-            transition: background 0.2s;
-        }
-        .slideshow-arrow:hover {
-            background: #d31111;
-            color: #fff;
-        }
-        .slideshow-arrow.left {
-            left: 10px;
-        }
-        .slideshow-arrow.right {
-            right: 10px;
-        }
-        .slideshow-dots {
-            text-align: center;
-            position: absolute;
-            width: 100%;
-            bottom: 12px;
-            left: 0;
-            z-index: 2;
-        }
-        .slideshow-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin: 0 4px;
-            background: #fff;
-            border: 2px solid #d31111;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: background 0.2s, opacity 0.2s;
-        }
-        .slideshow-dot.active {
-            background: #d31111;
-            opacity: 1;
-        }
+        /* slideshow styles removed */
         .barbershop-pictures {
             margin: 20px 0 0 0;
             display: flex;
@@ -920,6 +790,7 @@
             <img class="slide" src="https://i.postimg.cc/DZHfyPs5/Screenshot-2025-10-30-at-11-39-01-AM.png" alt="OCUTS Work 8">
             <img class="slide" src="https://i.postimg.cc/KvcBMZgx/Screenshot-2025-10-30-at-11-38-40-AM.png" alt="OCUTS Work 9">
             <img class="slide" src="https://i.postimg.cc/bv0wgt7N/Screenshot-2025-10-30-at-11-38-52-AM.png" alt="OCUTS Work 10">
+            <img class="slide" src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="OCUTS Work 11">
             <span class="slideshow-arrow left" id="prevBtn">&#10094;</span>
             <span class="slideshow-arrow right" id="nextBtn">&#10095;</span>
             <div class="slideshow-dots" id="slideshowDots"></div>
@@ -939,13 +810,13 @@
                     <img src="https://i.postimg.cc/DZHfyPs5/Screenshot-2025-10-30-at-11-39-01-AM.png" alt="OCUTS Work 8">
                     <img src="https://i.postimg.cc/KvcBMZgx/Screenshot-2025-10-30-at-11-38-40-AM.png" alt="OCUTS Work 9">
                     <img src="https://i.postimg.cc/bv0wgt7N/Screenshot-2025-10-30-at-11-38-52-AM.png" alt="OCUTS Work 10">
+                    <img src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="OCUTS Work 11">
                 </div>
             </div>
         </div>
         <div class="barbershop-pictures">
             <img src="https://i.postimg.cc/FHp7Bpgw/temp-Imagep9-ZN7f.avif" alt="Barbershop View 1">
             <img src="https://i.postimg.cc/rphRKjD5/temp-Imager-Bg5ep.avif" alt="Barbershop View 2">
-                <img src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="Shop 3">
         </div>
     <div class="walkin-banner">
         <div class="walkin-scissors">
