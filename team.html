@@ -54,399 +54,6 @@
             color: white;
             padding: 0;
             z-index: 1000;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 4px 20px rgba(211, 17, 17, 0.3);
-            flex-shrink: 0;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px 30px;
-        }
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .logo-title img {
-            height: 50px;
-            width: auto;
-        }
-        h1 {
-            font-size: 1.8rem;
-            margin: 0;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #ffffff, #d31111);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            text-transform: uppercase;
-        }
-        nav {
-            display: flex;
-            gap: 5px;
-            background: transparent;
-            z-index: 2;
-            position: relative;
-            flex-shrink: 0;
-        }
-        nav a {
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            text-transform: uppercase;
-        }
-        nav a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #d31111;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        nav a:hover {
-            background-color: rgba(211, 17, 17, 0.1);
-            color: #d31111;
-        }
-        nav a:hover::before {
-            width: 80%;
-        }
-        .content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: auto;
-            width: 100%;
-            max-width: 100%;
-        }
-        /* Slideshow hero */
-        .slideshow-container {
-            position: relative;
-            width: 85vw;
-            max-width: 900px;
-            height: 55vh;
-            min-height: 340px;
-            margin: 36px auto 20px auto;
-            border-radius: 16px;
-            overflow: hidden;
-            background: linear-gradient(#0b0b0b,#111);
-            box-shadow: 0 8px 40px rgba(211,17,17,0.12);
-            display: block;
-        }
-        .slideshow-container .slide { display: none; width:100%; height:100%; object-fit:cover; }
-        .slideshow-container .active-slide { display: block; }
-        .slideshow-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.45);
-            color: #fff;
-            border: 2px solid #d31111;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6em;
-            cursor: pointer;
-            z-index: 5;
-        }
-        .slideshow-arrow.left { left: 14px; }
-        .slideshow-arrow.right { right: 14px; }
-        .slideshow-dots { position: absolute; left: 50%; transform: translateX(-50%); bottom: 12px; z-index:6; }
-        .slideshow-dot { display:inline-block; width:12px; height:12px; margin:0 6px; background:#fff; border:2px solid #d31111; border-radius:50%; opacity:0.75; cursor:pointer; }
-        .slideshow-dot.active { background:#d31111; opacity:1; }
-        .modal-gallery-close {
-            position: absolute;
-            top: 18px;
-            right: 32px;
-            font-size: 2.2em;
-            color: #fff;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1100;
-            transition: color 0.2s;
-        }
-        .modal-gallery-close:hover {
-            color: #d31111;
-        }
-        /* slideshow styles removed */
-        .barbershop-pictures {
-            margin: 20px 0 0 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-        }
-        .barbershop-pictures img {
-            width: 480px;
-            height: 340px;
-            max-width: 95vw;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 8px solid transparent;
-            background: 
-                linear-gradient(#111, #111) padding-box,
-                repeating-linear-gradient(
-                    45deg,
-                    #000000 0px,
-                    #000000 15px,
-                    #ffffff 15px,
-                    #ffffff 30px,
-                    #d31111 30px,
-                    #d31111 45px
-                ) border-box;
-            box-shadow: 
-                0 0 20px rgba(211, 17, 17, 0.6),
-                0 0 40px rgba(211, 17, 17, 0.3),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .barbershop-pictures img:hover {
-            transform: scale(1.05);
-            box-shadow: 
-                0 0 30px rgba(211, 17, 17, 0.8),
-                0 0 60px rgba(211, 17, 17, 0.5),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-        footer {
-            background-color: #000000;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            flex-shrink: 0;
-        }
-        /* Tablet and Large Screens */
-        @media (max-width: 1024px) {
-            .header-container {
-                padding: 15px 25px;
-            }
-            .logo-title img {
-                height: 45px;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-            nav a {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            .slideshow-container {
-                width: 92vw;
-                height: 55vh;
-                min-height: 350px;
-                max-height: 550px;
-            }
-            .slide {
-                width: 100%;
-                height: 100%;
-            }
-            .barbershop-pictures img {
-                width: 180px;
-                height: 120px;
-            }
-            .modal-gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 16px;
-            }
-            .modal-gallery-grid img {
-                height: 240px;
-            }
-            .slideshow-arrow {
-                width: 38px;
-                height: 38px;
-                font-size: 1.4em;
-            }
-        }
-        /* Mobile Landscape and Small Tablets */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 20px;
-            }
-            .logo-title {
-                justify-content: center;
-            }
-            .logo-title img {
-                height: 40px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            nav {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            nav a {
-                padding: 10px 18px;
-                font-size: 0.9rem;
-            }
-            .slideshow-container {
-                width: 94vw;
-                height: 48vh;
-                min-height: 320px;
-                max-height: 480px;
-                margin-top: 24px;
-            }
-            .view-all-btn {
-                padding: 9px 24px;
-                font-size: 1rem;
-                margin: 15px auto 0;
-            }
-            .slideshow-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 1.3em;
-            }
-            .slideshow-dot {
-                width: 11px;
-                height: 11px;
-                margin: 0 3px;
-            }
-            .barbershop-pictures img {
-                width: 150px;
-                height: 100px;
-            }
-            .modal-gallery-content {
-                padding: 28px 15px 15px;
-                max-width: 95vw;
-            }
-            .modal-gallery-close {
-                top: 12px;
-                right: 20px;
-                font-size: 2em;
-            }
-        }
-        /* Mobile Portrait */
-        @media (max-width: 600px) {
-            .header-container {
-                padding: 12px 15px;
-            }
-            .logo-title img {
-                height: 35px;
-            }
-            h1 {
-                font-size: 1.3rem;
-            }
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-            .slideshow-container {
-                width: 95vw;
-                height: 50vh;
-                min-height: 300px;
-                max-height: 450px;
-                margin-top: 20px;
-            }
-            .slide {
-                width: 100%;
-                height: 100%;
-            }
-            .slideshow-arrow {
-                width: 34px;
-                height: 34px;
-                font-size: 1.2em;
-            }
-            .slideshow-arrow.left {
-                left: 6px;
-            }
-            .slideshow-arrow.right {
-                right: 6px;
-            }
-            .slideshow-dot {
-                width: 10px;
-                height: 10px;
-                margin: 0 2px;
-            }
-            .view-all-btn {
-                padding: 8px 20px;
-                font-size: 0.95rem;
-                margin: 12px auto 0;
-            }
-            .barbershop-pictures {
-                gap: 16px;
-                margin-top: 15px;
-            }
-            .barbershop-pictures img {
-                width: 280px;
-                height: 200px;
-            }
-            .modal-gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .modal-gallery-grid img {
-                height: 280px;
-            }
-        }
-        /* Extra Small Devices */
-        @media (max-width: 360px) {
-            header h1 {
-                font-size: 1.2rem;
-            }
-            header img.logo {
-                width: 45px;
-            }
-            nav a {
-                padding: 8px 6px;
-                font-size: 0.75rem;
-            }
-            .slideshow-container {
-                height: 45vh;
-                min-height: 260px;
-            }
-            .slideshow-arrow {
-                width: 30px;
-                height: 30px;
-                font-size: 1em;
-            }
-            .view-all-btn {
-                padding: 7px 16px;
-                font-size: 0.9rem;
-            }
-            .barbershop-pictures img {
-                width: 260px;
-                height: 185px;
-            }
-        }
-        /* Walk-In Banner */
-        .walkin-banner {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 30px 20px;
-            margin: 20px auto 10px auto;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .walkin-scissors {
             flex-shrink: 0;
             filter: drop-shadow(0 0 8px rgba(211,17,17,0.9));
             animation: scissorGlow 2.5s ease-in-out infinite;
@@ -514,265 +121,151 @@
         }
 
         /* ── NOW HIRING SECTION ── */
-        .hiring-wrapper {
-            width: 100%;
-            padding: 28px 14px 10px;
-            box-sizing: border-box;
-            background: linear-gradient(180deg, rgba(80,0,0,0.18) 0%, transparent 100%);
-            border-top: 1px solid rgba(160,20,20,0.25);
-            border-bottom: 1px solid rgba(160,20,20,0.25);
-        }
-        .hiring-section-header {
-            text-align: center;
-            margin-bottom: 14px;
-        }
-        .hiring-section-logo {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 8px;
-            mix-blend-mode: lighten;
-            filter: drop-shadow(0 2px 12px rgba(180,20,20,0.5));
-        }
-        .hiring-section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(0.7rem, 2vw, 0.85rem);
-            letter-spacing: 4px;
-            color: #888;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-        .hiring-section-label::before,
-        .hiring-section-label::after {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background: #555;
-        }
-        .hiring-section-title {
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(1.8rem, 6vw, 2.6rem);
-            letter-spacing: 6px;
-            color: #fff;
-            margin: 0;
-            line-height: 1;
-        }
-        .hiring-section-title span {
-            color: #c0392b;
-        }
-        .hiring-section {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .hiring-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 0 2px rgba(160,20,20,0.4);
-            background: #0d0d0d;
-        }
-        /* image + text side by side */
-        .hiring-main-row {
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-        }
-        .hiring-flyer-frame {
-            flex: 0 0 42%;
-            width: 42%;
-            min-height: 100%;
-            background: #0d0d0d;
-            position: relative;
-            padding: 10px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        /* decorative corner accents */
-        .hiring-flyer-frame::before,
-        .hiring-flyer-frame::after {
-            content: '';
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            border-color: #cc1414;
-            border-style: solid;
-        }
-        .hiring-flyer-frame::before {
-            top: 6px; left: 6px;
-            border-width: 2px 0 0 2px;
-        }
-        .hiring-flyer-frame::after {
-            bottom: 6px; right: 6px;
-            border-width: 0 2px 2px 0;
-        }
-        .hiring-flyer-frame .corner-tr,
-        .hiring-flyer-frame .corner-bl {
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            border-color: #cc1414;
-            border-style: solid;
-        }
-        .hiring-flyer-frame .corner-tr {
-            top: 6px; right: 6px;
-            border-width: 2px 2px 0 0;
-        }
-        .hiring-flyer-frame .corner-bl {
-            bottom: 6px; left: 6px;
-            border-width: 0 0 2px 2px;
-        }
-        .hiring-flyer {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center center;
-            display: block;
-        }
-        .hiring-body-panel {
-            flex: 1;
-            padding: 14px 16px 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .hiring-badge {
-            display: inline-block;
-            background: #7a0c0c;
-            color: #ffd5d5;
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(0.5rem, 1.4vw, 0.65rem);
-            letter-spacing: 3px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        .hiring-headline {
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(1.4rem, 4.5vw, 2rem);
-            line-height: 1;
-            color: #d63030;
-            letter-spacing: 4px;
-            margin: 0 0 1px;
-        }
-        .hiring-sub {
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(0.65rem, 2vw, 0.88rem);
-            letter-spacing: 4px;
-            color: #e8e8e8;
-            margin: 0 0 2px;
-        }
-        .hiring-claim {
-            font-size: clamp(0.58rem, 1.5vw, 0.7rem);
-            color: #999;
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-        .hiring-divider {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 0 0 8px;
-        }
-        .hiring-divider::before,
-        .hiring-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #7a0c0c);
-        }
-        .hiring-divider::after { background: linear-gradient(270deg, transparent, #7a0c0c); }
-        .hiring-divider-icon { color: #7a0c0c; font-size: 0.8rem; }
-        .hiring-traits {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 8px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3px 5px;
-            text-align: left;
-        }
-        .hiring-traits li {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: clamp(0.55rem, 1.4vw, 0.68rem);
-            color: #e0e0e0;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(160,20,20,0.3);
-            border-radius: 5px;
-            padding: 3px 7px;
-            line-height: 1.2;
-        }
-        .hiring-traits li::before {
-            content: '✓';
-            color: #d63030;
-            font-weight: 900;
-            font-size: 0.6rem;
-            flex-shrink: 0;
-        }
-        .hiring-tagline {
-            font-size: clamp(0.58rem, 1.5vw, 0.7rem);
-            color: #bbb;
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        .hiring-tagline strong { color: #fff; }
-        .hiring-free {
-            display: inline-block;
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(0.78rem, 2.5vw, 1rem);
-            color: #d63030;
-            letter-spacing: 2px;
-            border: 1.5px solid #7a0c0c;
-            border-radius: 6px;
-            padding: 3px 12px;
-        }
-        /* two-tone CTA bar — spans full width below */
-        .hiring-cta-bar {
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            min-height: 48px;
-        }
-        .hiring-cta-label-wrap {
-            background: #111;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            padding: 8px 14px;
-            min-width: 0;
-        }
-        .hiring-cta-label {
-            font-size: clamp(0.5rem, 1.3vw, 0.65rem);
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #ffd5d5;
-            text-transform: uppercase;
-            line-height: 1.6;
-            white-space: nowrap;
-        }
-        .hiring-phone-wrap {
-            background: #7a0c0c;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 20px;
-        }
-        .hiring-phone {
-            font-family: 'Bebas Neue', 'Anton', 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(1.2rem, 4vw, 1.7rem);
-            color: #fff;
-            letter-spacing: 2px;
+            .hiring-free { display:inline-block }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img src="https://i.postimg.cc/JzrkP8rR/temp-Image8-UDv-Aw.avif" alt="OCUTS"></a><div style="font-weight:700">OCUTS</div></div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Bookings</a>
+        <a href="location.html">Location</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <!-- Hero slideshow -->
+    <section class="hero" id="hero">
+      <img class="slide active" src="https://i.postimg.cc/FszGQsRx/Screenshot-2025-10-30-at-11-36-50-AM.png" alt="slide1">
+      <img class="slide" src="https://i.postimg.cc/26HvHhn7/Screenshot-2025-10-30-at-11-37-09-AM.png" alt="slide2">
+      <img class="slide" src="https://i.postimg.cc/WzFDXKNz/Screenshot-2025-10-30-at-11-37-34-AM.png" alt="slide3">
+      <img class="slide" src="https://i.postimg.cc/PxdBjpN0/Screenshot-2025-10-30-at-11-37-51-AM.png" alt="slide4">
+      <img class="slide" src="https://i.postimg.cc/7YJtjMmq/Screenshot-2025-10-30-at-11-38-03-AM.png" alt="slide5">
+      <div class="overlay"></div>
+      <div class="arrow left" id="prev">&#10094;</div>
+      <div class="arrow right" id="next">&#10095;</div>
+      <div class="hero-caption"><h1>OCUTS Gallery</h1><p>Our work, our team, our vibe.</p></div>
+      <div class="controls" id="dots"></div>
+    </section>
+
+    <!-- Team -->
+    <section>
+      <h2 style="font-family:'Bebas Neue';letter-spacing:2px;margin:18px 0 8px">Meet the Team</h2>
+      <div class="team-grid">
+        <div class="card"><img src="https://i.postimg.cc/zfd45GKy/Screenshot-2025-10-29-at-4-07-08-PM.png" alt="Omar"><h3>Omar</h3><p>Ocuts</p><button onclick="openBooking('Omar','','https://www.instagram.com/ocuts_/')">Book With Me</button></div>
+        <div class="card"><img src="https://i.postimg.cc/wMY2YCfp/Screenshot-2025-10-29-at-4-08-33-PM.png" alt="Arsen"><h3>Arsen</h3><p>Ocuts Barbers</p><button onclick="openBooking('Arsen','https://app.thecut.co/barbers/ArsenDaBarber-ashr96x','')">Book With Me</button></div>
+        <div class="card"><img src="https://i.postimg.cc/wB8J4X7m/Screenshot-2025-10-29-at-4-43-49-PM.png" alt="Naseem"><h3>Naseem</h3><p>Ocuts Barbers</p><button onclick="openBooking('Naseem','https://app.thecut.co/barbers/naseem--Fallahin-nfciplm','https://www.instagram.com/naseem_fallahin/')">Book With Me</button></div>
+        <div class="card"><img src="https://i.postimg.cc/VkN4BjTV/Screenshot-2026-05-20-at-4-51-53-PM.png" alt="Randy"><h3>Randy</h3><p>Ocuts Barbers</p><button onclick="openBooking('Randy','https://booksy.com/en-us/1775190_randy-barbero_barber-shop_21078_louisville','https://www.instagram.com/la_bestia_barber/')">Book With Me</button></div>
+        <div class="card"><img src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="Nemo"><h3>Nemo</h3><p>Ocuts Barbers</p><button onclick="openBooking('Nemo','https://app.thecut.co/barbers/63f3f6cce5bd7b7da6f175f5','https://www.instagram.com/cutsbyfish/')">Book With Me</button></div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section>
+      <h2 style="font-family:'Bebas Neue';letter-spacing:2px;margin:28px 0 10px">Gallery</h2>
+      <div class="gallery" id="gallery">
+        <img src="https://i.postimg.cc/FszGQsRx/Screenshot-2025-10-30-at-11-36-50-AM.png" alt="g1">
+        <img src="https://i.postimg.cc/26HvHhn7/Screenshot-2025-10-30-at-11-37-09-AM.png" alt="g2">
+        <img src="https://i.postimg.cc/WzFDXKNz/Screenshot-2025-10-30-at-11-37-34-AM.png" alt="g3">
+        <img src="https://i.postimg.cc/PxdBjpN0/Screenshot-2025-10-30-at-11-37-51-AM.png" alt="g4">
+        <img src="https://i.postimg.cc/7YJtjMmq/Screenshot-2025-10-30-at-11-38-03-AM.png" alt="g5">
+        <img src="https://i.postimg.cc/P5hcZvQZ/Screenshot-2025-10-30-at-11-38-14-AM.png" alt="g6">
+        <img src="https://i.postimg.cc/NGmp4fMT/Screenshot-2025-10-30-at-11-38-27-AM.png" alt="g7">
+        <img src="https://i.postimg.cc/DZHfyPs5/Screenshot-2025-10-30-at-11-39-01-AM.png" alt="g8">
+        <img src="https://i.postimg.cc/KvcBMZgx/Screenshot-2025-10-30-at-11-38-40-AM.png" alt="g9">
+        <img src="https://i.postimg.cc/bv0wgt7N/Screenshot-2025-10-30-at-11-38-52-AM.png" alt="g10">
+        <img src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="g11">
+      </div>
+    </section>
+
+    <!-- Hiring -->
+    <section class="hiring">
+      <img src="https://i.postimg.cc/9QZ8XyPX/Screenshot-2026-04-24-at-4-28-23-PM.png" alt="Hiring flyer">
+      <div class="body">
+        <div style="display:flex;align-items:center;gap:8px"><div class="badge" style="background:#7a0c0c;padding:4px 10px;border-radius:6px">WE'RE HIRING</div></div>
+        <h2>NOW HIRING</h2>
+        <p>Licensed Barbers — Come claim your chair today. For more information call or text <strong>502-531-3719</strong></p>
+        <div class="ctas"><button class="btn" onclick="window.location.href='services.html'">Book With Us</button><a class="btn" href="tel:5025313719" style="text-decoration:none;display:inline-block">Call / Text</a></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer><p>&copy; 2026 OCUTS BARBERSHOP</p></footer>
+
+  <!-- Modal for gallery -->
+  <div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;z-index:80">
+    <div style="max-width:90vw;max-height:90vh;padding:18px;"> <button id="modalClose" style="float:right;background:none;border:none;color:#fff;font-size:22px">&times;</button>
+      <img id="modalImg" src="" style="width:100%;height:auto;border-radius:8px;display:block" alt="">
+    </div>
+  </div>
+
+  <!-- Booking options modal -->
+  <div id="bookingOptions" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:10000;align-items:center;justify-content:center;padding:12px;">
+    <div style="background:#121212;border-radius:12px;padding:12px;max-width:360px;width:100%;box-shadow:0 6px 30px rgba(0,0,0,0.6);">
+      <button id="bookingClose" style="float:right;background:none;border:none;color:#fff;font-size:18px">&times;</button>
+      <div style="clear:both"></div>
+      <h3 id="bookingTitle" style="font-family:'Bebas Neue','Anton',sans-serif;margin:6px 0 8px;color:#fff;letter-spacing:2px">Book</h3>
+      <p id="bookingSub" style="color:#ccc;margin:0 0 10px;font-size:0.95rem;">Choose how you'd like to book</p>
+      <div style="display:flex;gap:8px;"><a id="bookingOnline" href="#" target="_blank" style="flex:1;background:#cc1414;color:#fff;padding:10px;border-radius:8px;text-align:center;text-decoration:none;">Book Online</a></div>
+      <a id="bookingInsta" class="view-profile-btn" href="#" target="_blank" style="display:none;margin-top:10px;text-align:center;">View Instagram</a>
+    </div>
+  </div>
+
+  <script>
+    // Slideshow behavior
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.hero .slide'));
+      const dotsWrap = document.getElementById('dots');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      let idx=0, timer=null, INTERVAL=7000;
+      if(!slides.length) return;
+      slides.forEach((s,i)=>{ const d=document.createElement('div'); d.className='dot'+(i===0?' active':''); d.addEventListener('click',()=>{go(i);reset()}); dotsWrap.appendChild(d)});
+      function update(){slides.forEach((s,i)=>s.classList.toggle('active',i===idx)); Array.from(dotsWrap.children).forEach((d,i)=>d.classList.toggle('active',i===idx));}
+      function nextSlide(){idx=(idx+1)%slides.length;update()}
+      function prevSlide(){idx=(idx-1+slides.length)%slides.length;update()}
+      function go(n){idx=n;update()}
+      function start(){timer=setInterval(nextSlide,INTERVAL)}
+      function stop(){clearInterval(timer);timer=null}
+      function reset(){stop();start()}
+      prev.addEventListener('click',()=>{prevSlide();reset()}); next.addEventListener('click',()=>{nextSlide();reset()});
+      start();
+    })();
+
+    // Gallery modal
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.addEventListener('click',()=>{
+        document.getElementById('modalImg').src=img.src; document.getElementById('modal').style.display='flex'; document.body.style.overflow='hidden';
+      })
+    })
+    document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('modal').style.display='none';document.body.style.overflow=''});
+
+    // Booking options
+    document.querySelectorAll('.card button').forEach(btn=>{
+      btn.addEventListener('click',function(){
+        const name=this.parentElement.querySelector('h3').textContent;
+        const book=this.getAttribute('data-book')||this.getAttribute('data-href')||this.dataset.book||'';
+        const insta=this.getAttribute('data-insta')||this.dataset.insta||'';
+        document.getElementById('bookingTitle').textContent = `Book ${name}`;
+        if(book){document.getElementById('bookingOnline').style.display='block';document.getElementById('bookingOnline').href=book;} else document.getElementById('bookingOnline').style.display='none';
+        if(insta){document.getElementById('bookingInsta').style.display='block';document.getElementById('bookingInsta').href=insta;} else document.getElementById('bookingInsta').style.display='none';
+        document.getElementById('bookingOptions').style.display='flex';
+      })
+    })
+    document.getElementById('bookingClose').addEventListener('click',()=>{document.getElementById('bookingOptions').style.display='none'});
+
+    function openBooking(name,book,insta){
+      document.getElementById('bookingTitle').textContent = `Book ${name}`;
+      if(book){document.getElementById('bookingOnline').style.display='block';document.getElementById('bookingOnline').href=book;} else document.getElementById('bookingOnline').style.display='none';
+      if(insta){document.getElementById('bookingInsta').style.display='block';document.getElementById('bookingInsta').href=insta;} else document.getElementById('bookingInsta').style.display='none';
+      document.getElementById('bookingOptions').style.display='flex';
+    }
+  </script>
+</body>
+</html>
             text-decoration: none;
             line-height: 1;
             white-space: nowrap;
