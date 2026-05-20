@@ -4,7 +4,7 @@ Version: 2.0
 
 Files included:
 - index.html (Home page with animated logo)
-- team.html (Gallery page)
+ 
 - services.html (Bookings page)
 - location.html (Location page)
 
