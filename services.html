@@ -260,6 +260,19 @@
         .view-profile-btn:hover {
             background-color: #b30000;
         }
+        .insta-btn {
+            background: transparent;
+            border: 1px solid #cc1414;
+            color: #cc1414;
+            padding: 7px 10px;
+            border-radius: 6px;
+            margin-left: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+        .insta-btn:hover { background:#cc1414;color:#fff; }
         .instagram-feed {
             margin-top: 40px;
             text-align: center;
@@ -925,6 +938,20 @@
         });
         document.getElementById('bookingClose').addEventListener('click', function() { document.getElementById('bookingOptions').style.display = 'none'; });
         document.getElementById('bookingOptions').addEventListener('click', function(e) { if (e.target === this) this.style.display = 'none'; });
+    </script>
+    <script>
+        // Inject Instagram buttons next to booking buttons when a data-instagram is present
+        document.querySelectorAll('.view-profile-btn').forEach(btn => {
+            const insta = btn.dataset.instagram || btn.getAttribute('data-instagram');
+            if (insta) {
+                const a = document.createElement('a');
+                a.href = insta;
+                a.target = '_blank';
+                a.className = 'insta-btn';
+                a.textContent = 'Instagram';
+                btn.insertAdjacentElement('afterend', a);
+            }
+        });
     </script>
 </body>
 </html>
