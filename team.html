@@ -139,22 +139,44 @@
             width: 100%;
             max-width: 100%;
         }
-        /* Static hero and gallery — slideshow removed per request */
-        .hero-static {
+        /* Slideshow hero */
+        .slideshow-container {
+            position: relative;
             width: 85vw;
             max-width: 900px;
-            height: auto;
+            height: 55vh;
+            min-height: 340px;
             margin: 36px auto 20px auto;
             border-radius: 16px;
             overflow: hidden;
+            background: linear-gradient(#0b0b0b,#111);
+            box-shadow: 0 8px 40px rgba(211,17,17,0.12);
+            display: block;
+        }
+        .slideshow-container .slide { display: none; width:100%; height:100%; object-fit:cover; }
+        .slideshow-container .active-slide { display: block; }
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.45);
+            color: #fff;
+            border: 2px solid #d31111;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(180deg,#0b0b0b,#111);
-            padding: 18px;
-            box-shadow: 0 8px 40px rgba(211,17,17,0.12);
+            font-size: 1.6em;
+            cursor: pointer;
+            z-index: 5;
         }
-        .hero-static img { width: 100%; height: auto; border-radius: 12px; display:block; }
+        .slideshow-arrow.left { left: 14px; }
+        .slideshow-arrow.right { right: 14px; }
+        .slideshow-dots { position: absolute; left: 50%; transform: translateX(-50%); bottom: 12px; z-index:6; }
+        .slideshow-dot { display:inline-block; width:12px; height:12px; margin:0 6px; background:#fff; border:2px solid #d31111; border-radius:50%; opacity:0.75; cursor:pointer; }
+        .slideshow-dot.active { background:#d31111; opacity:1; }
         .modal-gallery-close {
             position: absolute;
             top: 18px;
@@ -779,20 +801,21 @@
         </div>
     </header>
     <div class="content">
-        <div class="top-gallery" style="width:85vw;max-width:900px;margin:36px auto 20px auto;">
-            <div class="modal-gallery-grid">
-                <img src="https://i.postimg.cc/FszGQsRx/Screenshot-2025-10-30-at-11-36-50-AM.png" alt="OCUTS Work 1">
-                <img src="https://i.postimg.cc/26HvHhn7/Screenshot-2025-10-30-at-11-37-09-AM.png" alt="OCUTS Work 2">
-                <img src="https://i.postimg.cc/WzFDXKNz/Screenshot-2025-10-30-at-11-37-34-AM.png" alt="OCUTS Work 3">
-                <img src="https://i.postimg.cc/PxdBjpN0/Screenshot-2025-10-30-at-11-37-51-AM.png" alt="OCUTS Work 4">
-                <img src="https://i.postimg.cc/7YJtjMmq/Screenshot-2025-10-30-at-11-38-03-AM.png" alt="OCUTS Work 5">
-                <img src="https://i.postimg.cc/P5hcZvQZ/Screenshot-2025-10-30-at-11-38-14-AM.png" alt="OCUTS Work 6">
-                <img src="https://i.postimg.cc/NGmp4fMT/Screenshot-2025-10-30-at-11-38-27-AM.png" alt="OCUTS Work 7">
-                <img src="https://i.postimg.cc/DZHfyPs5/Screenshot-2025-10-30-at-11-39-01-AM.png" alt="OCUTS Work 8">
-                <img src="https://i.postimg.cc/KvcBMZgx/Screenshot-2025-10-30-at-11-38-40-AM.png" alt="OCUTS Work 9">
-                <img src="https://i.postimg.cc/bv0wgt7N/Screenshot-2025-10-30-at-11-38-52-AM.png" alt="OCUTS Work 10">
-                <img src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="OCUTS Work 11">
-            </div>
+        <div class="slideshow-container" id="slideshow">
+            <img class="slide active-slide" src="https://i.postimg.cc/FszGQsRx/Screenshot-2025-10-30-at-11-36-50-AM.png" alt="OCUTS Work 1">
+            <img class="slide" src="https://i.postimg.cc/26HvHhn7/Screenshot-2025-10-30-at-11-37-09-AM.png" alt="OCUTS Work 2">
+            <img class="slide" src="https://i.postimg.cc/WzFDXKNz/Screenshot-2025-10-30-at-11-37-34-AM.png" alt="OCUTS Work 3">
+            <img class="slide" src="https://i.postimg.cc/PxdBjpN0/Screenshot-2025-10-30-at-11-37-51-AM.png" alt="OCUTS Work 4">
+            <img class="slide" src="https://i.postimg.cc/7YJtjMmq/Screenshot-2025-10-30-at-11-38-03-AM.png" alt="OCUTS Work 5">
+            <img class="slide" src="https://i.postimg.cc/P5hcZvQZ/Screenshot-2025-10-30-at-11-38-14-AM.png" alt="OCUTS Work 6">
+            <img class="slide" src="https://i.postimg.cc/NGmp4fMT/Screenshot-2025-10-30-at-11-38-27-AM.png" alt="OCUTS Work 7">
+            <img class="slide" src="https://i.postimg.cc/DZHfyPs5/Screenshot-2025-10-30-at-11-39-01-AM.png" alt="OCUTS Work 8">
+            <img class="slide" src="https://i.postimg.cc/KvcBMZgx/Screenshot-2025-10-30-at-11-38-40-AM.png" alt="OCUTS Work 9">
+            <img class="slide" src="https://i.postimg.cc/bv0wgt7N/Screenshot-2025-10-30-at-11-38-52-AM.png" alt="OCUTS Work 10">
+            <img class="slide" src="https://i.postimg.cc/7L5kcJCn/Screenshot-2026-05-20-at-5-09-15-PM.png" alt="OCUTS Work 11">
+            <span class="slideshow-arrow left" id="prevBtn">&#10094;</span>
+            <span class="slideshow-arrow right" id="nextBtn">&#10095;</span>
+            <div class="slideshow-dots" id="slideshowDots"></div>
         </div>
     <button class="view-all-btn" id="viewAllBtn">View All</button>
         <div class="modal-gallery" id="modalGallery">
@@ -879,7 +902,44 @@
         <p>&copy; 2024 BARBERSITE. All rights reserved to OCUTS.</p>
     </footer>
     <script>
-    // Modal gallery logic (static gallery - no slideshow)
+    // Slideshow logic (7s autoplay) with dots and arrow controls
+    (function() {
+        const slides = Array.from(document.querySelectorAll('.slideshow-container .slide'));
+        const dotsContainer = document.getElementById('slideshowDots');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let current = 0;
+        let timer = null;
+        const INTERVAL = 7000; // 7 seconds
+
+        function renderDots() {
+            slides.forEach((_, i) => {
+                const d = document.createElement('span');
+                d.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+                d.addEventListener('click', () => { goTo(i); reset(); });
+                dotsContainer.appendChild(d);
+            });
+        }
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active-slide', i === current));
+            Array.from(dotsContainer.children).forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+        function next() { current = (current + 1) % slides.length; update(); }
+        function prev() { current = (current - 1 + slides.length) % slides.length; update(); }
+        function goTo(i) { current = i; update(); }
+        function start() { timer = setInterval(next, INTERVAL); }
+        function stop() { clearInterval(timer); timer = null; }
+        function reset() { stop(); start(); }
+
+        if (slides.length) {
+            renderDots();
+            prevBtn.addEventListener('click', () => { prev(); reset(); });
+            nextBtn.addEventListener('click', () => { next(); reset(); });
+            start();
+        }
+    })();
+
+    // Modal gallery logic
     const viewAllBtn = document.getElementById('viewAllBtn');
     const modalGallery = document.getElementById('modalGallery');
     const closeModalBtn = document.getElementById('closeModalBtn');
