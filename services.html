@@ -788,26 +788,26 @@
                 <img src="https://i.postimg.cc/zfd45GKy/Screenshot-2025-10-29-at-4-07-08-PM.png" alt="Omar">
                 <h3>Omar</h3>
                 <p>Ocuts</p>
-                <a href="https://www.instagram.com/ocuts_/" class="view-profile-btn">Book With Me</a>
+                <button class="view-profile-btn" data-name="Omar" data-instagram="https://www.instagram.com/ocuts_/">Book With Me</button>
             </div>
             <div class="service-card">
                 <img src="https://i.postimg.cc/wMY2YCfp/Screenshot-2025-10-29-at-4-08-33-PM.png" alt="Arsen">
                 <h3>Arsen</h3>
                 <p>Ocuts Barbers</p>
-                <a href="https://app.thecut.co/barbers/ArsenDaBarber-ashr96x" class="view-profile-btn">Book With Me</a>
+                <button class="view-profile-btn" data-name="Arsen" data-book="https://app.thecut.co/barbers/ArsenDaBarber-ashr96x">Book With Me</button>
             </div>
             
             <div class="service-card">
                 <img src="https://i.postimg.cc/wB8J4X7m/Screenshot-2025-10-29-at-4-43-49-PM.png" alt="Naseem">
                 <h3>Naseem</h3>
                 <p>Ocuts Barbers</p>
-                <a href="https://www.instagram.com/naseem_fallahin/" class="view-profile-btn">Book With Me</a>
+                <button class="view-profile-btn" data-name="Naseem" data-instagram="https://www.instagram.com/naseem_fallahin/">Book With Me</button>
             </div>
             <div class="service-card">
                 <img src="https://i.postimg.cc/wB8J4X7m/Screenshot-2025-10-29-at-4-43-49-PM.png" alt="Randy">
                 <h3>Randy Barbero</h3>
                 <p>La Bestia — <a href="https://www.instagram.com/la_bestia_barber/" target="_blank">Instagram</a></p>
-                <a href="https://booksy.com/en-us/1775190_randy-barbero_barber-shop_21078_louisville?do=invite&_branch_match_id=1547343545126338391&utm_medium=profile_share_from_registration&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVD3DKz8%2Fw8stOM06yrytKTUstKsrMS49PKsovL04tsg1OTEssygQAQa7ZCzwAAAA%3D" class="view-profile-btn" target="_blank">Book With Me</a>
+                <button class="view-profile-btn" data-name="Randy Barbero" data-book="https://booksy.com/en-us/1775190_randy-barbero_barber-shop_21078_louisville?do=invite&_branch_match_id=1547343545126338391&utm_medium=profile_share_from_registration&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVD3DKz8%2Fw8stOM06yrytKTUstKsrMS49PKsovL04tsg1OTEssygQAQa7ZCzwAAAA%3D" data-instagram="https://www.instagram.com/la_bestia_barber/">Book With Me</button>
             </div>
         </div>
         <!-- Now Hiring Teaser -->
@@ -894,5 +894,41 @@
         });
     </script>
     <script async src="//www.instagram.com/embed.js"></script>
+    <!-- Booking Options Modal -->
+    <div id="bookingOptions" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:10000;align-items:center;justify-content:center;padding:12px;">
+        <div style="background:#121212;border-radius:12px;padding:12px;max-width:360px;width:100%;box-shadow:0 6px 30px rgba(0,0,0,0.6);">
+            <button id="bookingClose" style="float:right;background:none;border:none;color:#fff;font-size:18px;">&times;</button>
+            <div style="clear:both;"></div>
+            <h3 id="bookingTitle" style="font-family:'Bebas Neue','Anton',sans-serif;margin:6px 0 8px;color:#fff;letter-spacing:2px;">Book</h3>
+            <p id="bookingSub" style="color:#ccc;margin:0 0 10px;font-size:0.95rem;">Choose how you'd like to book</p>
+            <div style="display:flex;gap:8px;">
+                <a id="bookingCall" href="#" style="flex:1;background:#111;border:1px solid #333;color:#fff;padding:10px;border-radius:8px;text-align:center;text-decoration:none;">Call</a>
+                <a id="bookingOnline" href="#" target="_blank" style="flex:1;background:#cc1414;color:#fff;padding:10px;border-radius:8px;text-align:center;text-decoration:none;">Book Online</a>
+            </div>
+            <a id="bookingInsta" href="#" target="_blank" style="display:block;margin-top:10px;text-align:center;color:#cc1414;text-decoration:none;">View Instagram</a>
+        </div>
+    </div>
+    <script>
+        // Booking options popup logic
+        document.querySelectorAll('.view-profile-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const name = this.dataset.name || this.getAttribute('data-name') || '';
+                const book = this.dataset.book || this.getAttribute('data-book') || '';
+                const insta = this.dataset.instagram || this.getAttribute('data-instagram') || '';
+                const phone = 'tel:5025313719';
+                document.getElementById('bookingTitle').textContent = name ? `Book ${name}` : 'Book';
+                document.getElementById('bookingSub').textContent = 'Choose how you\'d like to book';
+                const callLink = document.getElementById('bookingCall');
+                callLink.setAttribute('href', phone);
+                const onlineLink = document.getElementById('bookingOnline');
+                if (book) { onlineLink.style.display = 'block'; onlineLink.setAttribute('href', book); } else { onlineLink.style.display = 'none'; }
+                const instaLink = document.getElementById('bookingInsta');
+                if (insta) { instaLink.style.display = 'block'; instaLink.setAttribute('href', insta); } else { instaLink.style.display = 'none'; }
+                document.getElementById('bookingOptions').style.display = 'flex';
+            });
+        });
+        document.getElementById('bookingClose').addEventListener('click', function() { document.getElementById('bookingOptions').style.display = 'none'; });
+        document.getElementById('bookingOptions').addEventListener('click', function(e) { if (e.target === this) this.style.display = 'none'; });
+    </script>
 </body>
 </html>
