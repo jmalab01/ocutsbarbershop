@@ -890,7 +890,7 @@
             <button id="bookingClose" style="float:right;background:none;border:none;color:#fff;font-size:18px;">&times;</button>
             <div style="clear:both;"></div>
             <h3 id="bookingTitle" style="font-family:'Bebas Neue','Anton',sans-serif;margin:6px 0 8px;color:#fff;letter-spacing:2px;">Book</h3>
-            <p id="bookingSub" style="color:#ccc;margin:0 0 10px;font-size:0.95rem;">Choose how you'd like to book</p>
+            <p id="bookingSub" style="color:#ccc;margin:0 0 10px;font-size:0.95rem;">Book with</p>
             <div style="display:flex;gap:8px;">
                 <a id="bookingOnline" href="#" target="_blank" style="flex:1;background:#cc1414;color:#fff;padding:10px;border-radius:8px;text-align:center;text-decoration:none;">Book Online</a>
             </div>
@@ -905,7 +905,7 @@
                 const book = this.dataset.book || this.getAttribute('data-book') || '';
                 const insta = this.dataset.instagram || this.getAttribute('data-instagram') || '';
                 document.getElementById('bookingTitle').textContent = name ? `Book ${name}` : 'Book';
-                document.getElementById('bookingSub').textContent = 'Choose how you\'d like to book';
+                document.getElementById('bookingSub').textContent = name ? `Book with ${name}` : 'Book with us';
                 const onlineLink = document.getElementById('bookingOnline');
                 if (book) { onlineLink.style.display = 'block'; onlineLink.setAttribute('href', book); } else { onlineLink.style.display = 'none'; }
                 const instaLink = document.getElementById('bookingInsta');
