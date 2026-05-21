@@ -882,10 +882,22 @@
     <script>
         // Booking options popup logic
         document.querySelectorAll('.view-profile-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
                 const name = this.dataset.name || this.getAttribute('data-name') || '';
                 const book = this.dataset.book || this.getAttribute('data-book') || '';
                 const insta = this.dataset.instagram || this.getAttribute('data-instagram') || '';
+
+                // If exactly one external link exists, open it directly instead of showing the modal
+                const links = [];
+                if (book && book.toString().trim() !== '') links.push({ href: book, type: 'book' });
+                if (insta && insta.toString().trim() !== '') links.push({ href: insta, type: 'insta' });
+                if (links.length === 1) {
+                    // open the single link in a new tab and do not show modal
+                    window.open(links[0].href, '_blank', 'noopener');
+                    return;
+                }
+
+                // Otherwise show the modal with available options
                 document.getElementById('bookingTitle').textContent = name ? `Book ${name}` : 'Book';
                 document.getElementById('bookingSub').textContent = 'Choose how you\'d like to book';
                 const onlineLink = document.getElementById('bookingOnline');
