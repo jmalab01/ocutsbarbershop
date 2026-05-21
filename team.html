@@ -263,23 +263,23 @@
 
         /* ── SHOP GALLERY ───────────────────────────────────────────── */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
         .gallery-item {
-            position: relative; overflow: hidden;
+            width: 100%;
             border-radius: 16px;
-            border: 1px solid rgba(211,17,17,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(211,17,17,0.15);
             background: #0d0d0d;
-        }
-        .gallery-item.featured {
-            grid-column: 1 / -1;
+            line-height: 0;
         }
         .gallery-item img {
-            width: 100%; height: auto;
-            object-fit: contain;
+            width: 100%;
+            height: auto;
             display: block;
+            border-radius: 16px;
         }
         .gallery-item::after { display: none; }
 
