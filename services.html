@@ -880,97 +880,76 @@
         </div>
     </div>
     <script>
-        // Booking options popup logic
-        // Only bind to profile buttons that live inside a service card so we don't
-        // accidentally attach to modal links which also use the same class.
-        document.querySelectorAll('.service-card .view-profile-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const name = this.dataset.name || this.getAttribute('data-name') || '';
-                const book = this.dataset.book || this.getAttribute('data-book') || '';
-                const insta = this.dataset.instagram || this.getAttribute('data-instagram') || '';
+    (function () {
+        var modal    = document.getElementById('bookingOptions');
+        var closeBtn = document.getElementById('bookingClose');
+        var onlineBtn = document.getElementById('bookingOnline');
+        var instaBtn  = document.getElementById('bookingInsta');
 
-                // If exactly one external link exists, open it directly instead of showing the modal
-                const links = [];
-                if (book && book.toString().trim() !== '') links.push({ href: book, type: 'book' });
-                if (insta && insta.toString().trim() !== '') links.push({ href: insta, type: 'insta' });
-                if (links.length === 1) {
-                    // Suppress the modal briefly so when the user returns the modal doesn't flash
-                    function setSuppress(ms) { try { sessionStorage.setItem('ocuts_modal_suppress_until', Date.now() + ms); } catch (e) {} }
-                    setSuppress(1500);
-                    // ensure modal is hidden and links cleared, then open the single link
-                    hideBookingOptions();
-                    // open after a small timeout so DOM updates are applied and the
-                    // navigation feels smooth when returning to the tab
-                    setTimeout(function() {
-                        window.open(links[0].href, '_blank', 'noopener');
-                    }, 60);
+        // ── helpers ──────────────────────────────────────────────────────────
+        function openLink(url) {
+            // Use a temporary anchor so browsers don't popup-block it
+            var a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function showModal(name, book, insta) {
+            document.getElementById('bookingTitle').textContent = name ? 'Book ' + name : 'Book';
+            document.getElementById('bookingSub').textContent   = 'Choose how you\'d like to book';
+            if (book)  { onlineBtn.href = book;  onlineBtn.style.display = 'block'; }
+            else       { onlineBtn.style.display = 'none'; }
+            if (insta) { instaBtn.href  = insta; instaBtn.style.display  = 'block'; }
+            else       { instaBtn.style.display  = 'none'; }
+            modal.style.display = 'flex';
+        }
+
+        function hideModal() {
+            modal.style.display = 'none';
+        }
+
+        // ── card buttons ─────────────────────────────────────────────────────
+        document.querySelectorAll('.service-card .view-profile-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var name  = this.dataset.name      || '';
+                var book  = (this.dataset.book     || '').trim();
+                var insta = (this.dataset.instagram || '').trim();
+
+                var count = (book ? 1 : 0) + (insta ? 1 : 0);
+
+                if (count === 0) return; // no links, do nothing
+
+                if (count === 1) {
+                    // single link → open directly, no modal
+                    openLink(book || insta);
                     return;
                 }
 
-                // Otherwise show the modal with available options
-                document.getElementById('bookingTitle').textContent = name ? `Book ${name}` : 'Book';
-                document.getElementById('bookingSub').textContent = 'Choose how you\'d like to book';
-                const onlineLink = document.getElementById('bookingOnline');
-                if (book) { onlineLink.style.display = 'block'; onlineLink.setAttribute('href', book); } else { onlineLink.style.display = 'none'; }
-                const instaLink = document.getElementById('bookingInsta');
-                if (insta) { instaLink.style.display = 'block'; instaLink.setAttribute('href', insta); } else { instaLink.style.display = 'none'; }
-                document.getElementById('bookingOptions').style.display = 'flex';
+                // two links → show modal
+                showModal(name, book, insta);
             });
         });
-    const bookingOptionsEl = document.getElementById('bookingOptions');
-    function resetBookingLinks() {
-        const onlineLink = document.getElementById('bookingOnline');
-        const instaLink = document.getElementById('bookingInsta');
-        if (onlineLink) { onlineLink.removeAttribute('href'); onlineLink.style.display = 'none'; }
-        if (instaLink) { instaLink.removeAttribute('href'); instaLink.style.display = 'none'; }
-        const title = document.getElementById('bookingTitle');
-        const sub = document.getElementById('bookingSub');
-        if (title) title.textContent = 'Book';
-        if (sub) sub.textContent = '';
-    }
 
-    // Suppression helper: prevents modal from flashing when user returns from an
-    // external booking page. Stores a timestamp until which suppression is active.
-    function setSuppress(ms) { try { sessionStorage.setItem('ocuts_modal_suppress_until', Date.now() + ms); } catch (e) {} }
+        // ── modal close ───────────────────────────────────────────────────────
+        if (closeBtn) closeBtn.addEventListener('click', hideModal);
+        modal.addEventListener('click', function(e) { if (e.target === modal) hideModal(); });
 
-    // Hide booking modal. If `reset` is true (default) then clear modal links when hiding.
-    function hideBookingOptions(reset = true) {
-        if (bookingOptionsEl) bookingOptionsEl.style.display = 'none';
-        if (reset) resetBookingLinks();
-    }
+        // Modal link clicks: let the browser navigate, then hide modal on return
+        onlineBtn.addEventListener('click', hideModal);
+        instaBtn.addEventListener('click',  hideModal);
 
-    const bookingCloseEl = document.getElementById('bookingClose');
-    if (bookingCloseEl) bookingCloseEl.addEventListener('click', function() { hideBookingOptions(); });
-    if (bookingOptionsEl) bookingOptionsEl.addEventListener('click', function(e) { if (e.target === this) hideBookingOptions(); });
-
-    // Also clear and hide modal whenever the document becomes visible again (user returns tab)
-    function isSuppressed() { try { const v = sessionStorage.getItem('ocuts_modal_suppress_until'); return v && Date.now() < Number(v); } catch(e) { return false; } }
-    document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'visible') {
-            // if suppressed, still ensure modal is hidden but do not re-initialize anything
-            hideBookingOptions();
-            // clear suppression if it expired
-            try { const v = sessionStorage.getItem('ocuts_modal_suppress_until'); if (!v || Date.now() >= Number(v)) sessionStorage.removeItem('ocuts_modal_suppress_until'); } catch(e) {}
-        }
-    });
-    // Also hide/reset on focus (some browsers trigger focus instead of visibilitychange)
-    window.addEventListener('focus', function() { hideBookingOptions(); try { const v = sessionStorage.getItem('ocuts_modal_suppress_until'); if (!v || Date.now() >= Number(v)) sessionStorage.removeItem('ocuts_modal_suppress_until'); } catch(e) {} });
-
-        // If the user navigates away (opens a link) and then comes back via browser back or focus,
-        // ensure the modal is hidden so the page returns to a normal state.
-        window.addEventListener('pageshow', function(evt) {
-            // pageshow.persisted is true when coming from bfcache; hide modal in that case.
-            if (evt.persisted) hideBookingOptions();
+        // ── hide modal when user returns to this tab ──────────────────────────
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') hideModal();
         });
-        window.addEventListener('focus', function() { hideBookingOptions(); });
-
-        // Also hide modal when the user clicks the external links in the modal (before navigation)
-    const onlineBtn = document.getElementById('bookingOnline');
-    const instaBtn = document.getElementById('bookingInsta');
-    // Delay resetting/hiding the modal when these links are clicked so the browser
-    // navigation can proceed without the href being removed first.
-    if (onlineBtn) onlineBtn.addEventListener('click', function() { setSuppress(2000); setTimeout(function(){ hideBookingOptions(true); }, 300); });
-    if (instaBtn) instaBtn.addEventListener('click', function() { setSuppress(2000); setTimeout(function(){ hideBookingOptions(true); }, 300); });
+        window.addEventListener('pageshow', function(e) {
+            if (e.persisted) hideModal(); // bfcache restore
+        });
+    })();
     </script>
     
 </body>
