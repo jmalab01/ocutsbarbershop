@@ -881,7 +881,9 @@
     </div>
     <script>
         // Booking options popup logic
-        document.querySelectorAll('.view-profile-btn').forEach(btn => {
+        // Only bind to profile buttons that live inside a service card so we don't
+        // accidentally attach to modal links which also use the same class.
+        document.querySelectorAll('.service-card .view-profile-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const name = this.dataset.name || this.getAttribute('data-name') || '';
                 const book = this.dataset.book || this.getAttribute('data-book') || '';
@@ -897,7 +899,11 @@
                     setSuppress(1500);
                     // ensure modal is hidden and links cleared, then open the single link
                     hideBookingOptions();
-                    window.open(links[0].href, '_blank', 'noopener');
+                    // open after a small timeout so DOM updates are applied and the
+                    // navigation feels smooth when returning to the tab
+                    setTimeout(function() {
+                        window.open(links[0].href, '_blank', 'noopener');
+                    }, 60);
                     return;
                 }
 
