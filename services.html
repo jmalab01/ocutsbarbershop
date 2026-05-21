@@ -929,10 +929,14 @@
         if (sub) sub.textContent = '';
     }
 
-    function hideBookingOptions() {
+    // Suppression helper: prevents modal from flashing when user returns from an
+    // external booking page. Stores a timestamp until which suppression is active.
+    function setSuppress(ms) { try { sessionStorage.setItem('ocuts_modal_suppress_until', Date.now() + ms); } catch (e) {} }
+
+    // Hide booking modal. If `reset` is true (default) then clear modal links when hiding.
+    function hideBookingOptions(reset = true) {
         if (bookingOptionsEl) bookingOptionsEl.style.display = 'none';
-        // Clear links to avoid stale hrefs when user returns via back/forward
-        resetBookingLinks();
+        if (reset) resetBookingLinks();
     }
 
     const bookingCloseEl = document.getElementById('bookingClose');
@@ -965,8 +969,8 @@
     const instaBtn = document.getElementById('bookingInsta');
     // Delay resetting/hiding the modal when these links are clicked so the browser
     // navigation can proceed without the href being removed first.
-    if (onlineBtn) onlineBtn.addEventListener('click', function() { setTimeout(hideBookingOptions, 300); });
-    if (instaBtn) instaBtn.addEventListener('click', function() { setTimeout(hideBookingOptions, 300); });
+    if (onlineBtn) onlineBtn.addEventListener('click', function() { setSuppress(2000); setTimeout(function(){ hideBookingOptions(true); }, 300); });
+    if (instaBtn) instaBtn.addEventListener('click', function() { setSuppress(2000); setTimeout(function(){ hideBookingOptions(true); }, 300); });
     </script>
     
 </body>
