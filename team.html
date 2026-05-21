@@ -196,8 +196,40 @@
         .team-card-btn:last-child { margin-bottom: 0; }
         .team-card-btn:hover { transform: translateY(-2px); opacity: 0.92; }
 
-        /* ── BARBER WORK GALLERY (hidden, opened via lightbox) ── */
+        /* ── BARBER WORK GALLERY (hidden, source for lightbox) ── */
         .work-gallery { display: none; }
+
+        /* ── PHOTO STACK ── */
+        .photo-stack {
+            position: relative;
+            width: 124px; height: 124px;
+            margin: 18px auto 22px;
+            cursor: pointer; flex-shrink: 0;
+        }
+        .photo-stack .stack-card {
+            position: absolute;
+            width: 108px; height: 108px;
+            border-radius: 12px; overflow: hidden;
+            border: 2px solid rgba(211,17,17,0.28);
+            background: #1e1e1e;
+            transition: transform 0.3s ease;
+        }
+        .stack-back-2 { transform: rotate(-8deg); top: 10px; left: 10px; z-index: 1; background: #161616; }
+        .stack-back-1 { transform: rotate(-4deg); top: 5px; left: 5px; z-index: 2; background: #1c1c1c; }
+        .stack-front  { transform: rotate(0deg);  top: 0;   left: 0;   z-index: 3; }
+        .stack-front img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .photo-stack:hover .stack-back-2 { transform: rotate(-13deg) translate(-4px, 4px); }
+        .photo-stack:hover .stack-back-1 { transform: rotate(-6deg)  translate(-2px, 2px); }
+        .photo-stack:hover .stack-front  { transform: scale(1.05); box-shadow: 0 8px 24px rgba(211,17,17,0.35); }
+        .stack-badge {
+            position: absolute; bottom: -4px; right: -4px; z-index: 10;
+            background: #d31111; color: #fff;
+            font-family: 'Bebas Neue','Anton',sans-serif;
+            font-size: 0.68rem; letter-spacing: 1px;
+            padding: 3px 9px; border-radius: 99px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
 
         /* ── LIGHTBOX ── */
         #lightbox {
@@ -433,7 +465,14 @@
                                 <img src="https://i.postimg.cc/BSqBRfnb/Screenshot-2026-05-21-at-4-21-33-PM.png" alt="Omar's Work" loading="lazy">
                             </div>
                         </div>
-                        <button class="team-card-btn view-work-btn" data-target="omar">✂ View Work</button>
+                        <div class="photo-stack view-work-btn" data-target="omar" role="button" aria-label="View Omar's work">
+                            <div class="stack-card stack-back-2"></div>
+                            <div class="stack-card stack-back-1"></div>
+                            <div class="stack-card stack-front">
+                                <img src="https://i.postimg.cc/qJ3pfSb5/uuid-1C20D039-5676-498A-852F-60DA3F81E551-code-001-library-3-type-1-mode-2-loc-true-cap-true.jpg" alt="Omar's Work" loading="lazy" decoding="async">
+                            </div>
+                            <span class="stack-badge">4 photos</span>
+                        </div>
                         <a class="team-card-btn" href="https://www.instagram.com/ocuts_/" target="_blank" rel="noopener noreferrer">View Instagram</a>
                     </div>
                 </div>
@@ -457,7 +496,14 @@
                                 <img src="https://i.postimg.cc/xnSMZSx6/uuid-418701B4-B3D2-4B08-BE9E-27FA6D37C3F0-code-001-library-3-type-1-mode-1-loc-true-cap-true.png" alt="Arsen's Work" loading="lazy">
                             </div>
                         </div>
-                        <button class="team-card-btn view-work-btn" data-target="arsen">✂ View Work</button>
+                        <div class="photo-stack view-work-btn" data-target="arsen" role="button" aria-label="View Arsen's work">
+                            <div class="stack-card stack-back-2"></div>
+                            <div class="stack-card stack-back-1"></div>
+                            <div class="stack-card stack-front">
+                                <img src="https://i.postimg.cc/zq7CWPjY/uuid-DAC7A0AA-5FCD-4D70-B5E2-AAE108F6329C-code-001-library-3-type-1-mode-1-loc-true-cap-true.png" alt="Arsen's Work" loading="lazy" decoding="async">
+                            </div>
+                            <span class="stack-badge">3 photos</span>
+                        </div>
                         <a class="team-card-btn" href="https://app.thecut.co/barbers/ArsenDaBarber-ashr96x" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
                 </div>
@@ -484,7 +530,14 @@
                                 <img src="https://i.postimg.cc/yB6zyJBj/uuid-FFB12E8D-E753-4A22-9E76-8EE019797083-code-001-library-3-type-1-mode-1-loc-true-cap-true.png" alt="Naseem's Work" loading="lazy">
                             </div>
                         </div>
-                        <button class="team-card-btn view-work-btn" data-target="naseem">✂ View Work</button>
+                        <div class="photo-stack view-work-btn" data-target="naseem" role="button" aria-label="View Naseem's work">
+                            <div class="stack-card stack-back-2"></div>
+                            <div class="stack-card stack-back-1"></div>
+                            <div class="stack-card stack-front">
+                                <img src="https://i.postimg.cc/fDrZLw4n/uuid-360E31F1-C197-4CE8-80F5-14582E5B40D2-code-001-library-3-type-1-mode-1-loc-true-cap-true.png" alt="Naseem's Work" loading="lazy" decoding="async">
+                            </div>
+                            <span class="stack-badge">4 photos</span>
+                        </div>
                         <a class="team-card-btn" href="https://app.thecut.co/barbers/naseem--Fallahin-nfciplm" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
                 </div>
@@ -508,7 +561,14 @@
                                 <img src="https://i.postimg.cc/HxKYttjg/DSC00053.jpg" alt="Randy's Work" loading="lazy">
                             </div>
                         </div>
-                        <button class="team-card-btn view-work-btn" data-target="randy">✂ View Work</button>
+                        <div class="photo-stack view-work-btn" data-target="randy" role="button" aria-label="View Randy's work">
+                            <div class="stack-card stack-back-2"></div>
+                            <div class="stack-card stack-back-1"></div>
+                            <div class="stack-card stack-front">
+                                <img src="https://i.postimg.cc/2SF5fv9w/DSC02201.jpg" alt="Randy's Work" loading="lazy" decoding="async">
+                            </div>
+                            <span class="stack-badge">3 photos</span>
+                        </div>
                         <a class="team-card-btn" href="https://booksy.com/en-us/1775190_randy-barbero_barber-shop_21078_louisville?do=invite&_branch_match_id=1547343545126338391&utm_medium=profile_share_from_registration&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVD3DKz8%2Fw8stOM06yrytKTUstKsrMS49PKsovL04tsg1OTEssygQAQa7ZCzwAAAA%3D" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
                 </div>
@@ -529,7 +589,14 @@
                                 <img src="https://i.postimg.cc/9XHRsGpT/IMG-6764.jpg" alt="Nemo's Work" loading="lazy">
                             </div>
                         </div>
-                        <button class="team-card-btn view-work-btn" data-target="nemo">✂ View Work</button>
+                        <div class="photo-stack view-work-btn" data-target="nemo" role="button" aria-label="View Nemo's work">
+                            <div class="stack-card stack-back-2"></div>
+                            <div class="stack-card stack-back-1"></div>
+                            <div class="stack-card stack-front">
+                                <img src="https://i.postimg.cc/3K6DFM0C/IMG-6763.jpg" alt="Nemo's Work" loading="lazy" decoding="async">
+                            </div>
+                            <span class="stack-badge">2 photos</span>
+                        </div>
                         <a class="team-card-btn" href="https://app.thecut.co/barbers/63f3f6cce5bd7b7da6f175f5" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
                 </div>
