@@ -373,11 +373,39 @@
             background: #0d0d0d;
             border-radius: 16px;
             border: 1px solid rgba(211,17,17,0.1);
-            padding: 32px 24px;
+            padding: 24px 16px;
             overflow: hidden;
+            position: relative;
         }
+        .reviews-skeleton {
+            position: absolute; inset: 0;
+            background: #0d0d0d;
+            border-radius: 16px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 14px;
+            z-index: 2;
+            transition: opacity 0.4s;
+        }
+        .reviews-skeleton.hidden { opacity: 0; pointer-events: none; }
+        .reviews-skeleton-bar {
+            background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+            border-radius: 6px;
+            height: 14px;
+        }
+        @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
         .reviews-wrap iframe {
-            width: 100%; border: none; min-height: 480px;
+            width: 100%;
+            height: 520px;
+            border: none;
+            display: block;
+            border-radius: 10px;
+        }
+        @media (max-width: 600px) {
+            .reviews-wrap { padding: 16px 8px; }
+            .reviews-wrap iframe { height: 420px; }
         }
 
         /* ── BOOK CTA ───────────────────────────────────────────────── */
@@ -727,7 +755,19 @@
         <h3 class="section-title">CUSTOMER REVIEWS</h3>
         <div class="section-divider"></div>
         <div class="reviews-wrap">
-            <iframe src="https://widgets.sociablekit.com/google-reviews/iframe/25642132" frameborder="0" loading="lazy" title="Ocuts Barbershop Google Reviews"></iframe>
+            <div class="reviews-skeleton" id="reviewsSkeleton">
+                <div class="reviews-skeleton-bar" style="width:55%"></div>
+                <div class="reviews-skeleton-bar" style="width:80%"></div>
+                <div class="reviews-skeleton-bar" style="width:65%"></div>
+                <div class="reviews-skeleton-bar" style="width:72%"></div>
+                <div class="reviews-skeleton-bar" style="width:50%"></div>
+            </div>
+            <iframe
+                src="https://widgets.sociablekit.com/google-reviews/iframe/25642132"
+                frameborder="0"
+                title="Ocuts Barbershop Google Reviews"
+                onload="document.getElementById('reviewsSkeleton').classList.add('hidden')"
+            ></iframe>
         </div>
     </div>
 
