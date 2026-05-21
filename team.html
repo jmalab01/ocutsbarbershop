@@ -471,7 +471,7 @@
                             <div class="stack-card stack-front">
                                 <img src="https://i.postimg.cc/qJ3pfSb5/uuid-1C20D039-5676-498A-852F-60DA3F81E551-code-001-library-3-type-1-mode-2-loc-true-cap-true.jpg" alt="Omar's Work" loading="lazy" decoding="async">
                             </div>
-                            <span class="stack-badge">4 photos</span>
+                            <span class="stack-badge">✂ View Work</span>
                         </div>
                         <a class="team-card-btn" href="https://www.instagram.com/ocuts_/" target="_blank" rel="noopener noreferrer">View Instagram</a>
                     </div>
@@ -502,7 +502,7 @@
                             <div class="stack-card stack-front">
                                 <img src="https://i.postimg.cc/zq7CWPjY/uuid-DAC7A0AA-5FCD-4D70-B5E2-AAE108F6329C-code-001-library-3-type-1-mode-1-loc-true-cap-true.png" alt="Arsen's Work" loading="lazy" decoding="async">
                             </div>
-                            <span class="stack-badge">3 photos</span>
+                            <span class="stack-badge">✂ View Work</span>
                         </div>
                         <a class="team-card-btn" href="https://app.thecut.co/barbers/ArsenDaBarber-ashr96x" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
@@ -536,7 +536,7 @@
                             <div class="stack-card stack-front">
                                 <img src="https://i.postimg.cc/fDrZLw4n/uuid-360E31F1-C197-4CE8-80F5-14582E5B40D2-code-001-library-3-type-1-mode-1-loc-true-cap-true.png" alt="Naseem's Work" loading="lazy" decoding="async">
                             </div>
-                            <span class="stack-badge">4 photos</span>
+                            <span class="stack-badge">✂ View Work</span>
                         </div>
                         <a class="team-card-btn" href="https://app.thecut.co/barbers/naseem--Fallahin-nfciplm" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
@@ -567,7 +567,7 @@
                             <div class="stack-card stack-front">
                                 <img src="https://i.postimg.cc/2SF5fv9w/DSC02201.jpg" alt="Randy's Work" loading="lazy" decoding="async">
                             </div>
-                            <span class="stack-badge">3 photos</span>
+                            <span class="stack-badge">✂ View Work</span>
                         </div>
                         <a class="team-card-btn" href="https://booksy.com/en-us/1775190_randy-barbero_barber-shop_21078_louisville?do=invite&_branch_match_id=1547343545126338391&utm_medium=profile_share_from_registration&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVD3DKz8%2Fw8stOM06yrytKTUstKsrMS49PKsovL04tsg1OTEssygQAQa7ZCzwAAAA%3D" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
@@ -595,7 +595,7 @@
                             <div class="stack-card stack-front">
                                 <img src="https://i.postimg.cc/3K6DFM0C/IMG-6763.jpg" alt="Nemo's Work" loading="lazy" decoding="async">
                             </div>
-                            <span class="stack-badge">2 photos</span>
+                            <span class="stack-badge">✂ View Work</span>
                         </div>
                         <a class="team-card-btn" href="https://app.thecut.co/barbers/63f3f6cce5bd7b7da6f175f5" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
@@ -766,15 +766,38 @@
             if (e.key === 'ArrowRight') nextImage();
         });
 
-        // "View Work" button opens lightbox at first photo
+        // "View Work" stack opens lightbox at current rotated index
         document.querySelectorAll('.view-work-btn').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 var target = btn.getAttribute('data-target');
                 var gallery = document.querySelector('.work-gallery[data-barber="' + target + '"]');
                 if (!gallery) return;
                 var srcs = Array.from(gallery.querySelectorAll('.work-gallery-item img')).map(function(img) { return img.src; });
-                openLightbox(srcs, 0);
+                var currentIdx = parseInt(btn.getAttribute('data-rotate-index') || '0', 10);
+                openLightbox(srcs, currentIdx);
             });
+        });
+
+        // Rotate the preview image on each stack every 10s
+        document.querySelectorAll('.photo-stack').forEach(function(stack) {
+            var target = stack.getAttribute('data-target');
+            var gallery = document.querySelector('.work-gallery[data-barber="' + target + '"]');
+            if (!gallery) return;
+            var imgs = Array.from(gallery.querySelectorAll('.work-gallery-item img'));
+            if (imgs.length < 2) return;
+            var frontImg = stack.querySelector('.stack-front img');
+            var idx = 0;
+            setInterval(function() {
+                idx = (idx + 1) % imgs.length;
+                stack.setAttribute('data-rotate-index', idx);
+                // Fade swap
+                frontImg.style.transition = 'opacity 0.5s';
+                frontImg.style.opacity = '0';
+                setTimeout(function() {
+                    frontImg.src = imgs[idx].src;
+                    frontImg.style.opacity = '1';
+                }, 500);
+            }, 10000);
         });
     })();
     </script>
