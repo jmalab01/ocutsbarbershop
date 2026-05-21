@@ -908,10 +908,31 @@
             });
         });
     const bookingOptionsEl = document.getElementById('bookingOptions');
-    function hideBookingOptions() { if (bookingOptionsEl) bookingOptionsEl.style.display = 'none'; }
+    function resetBookingLinks() {
+        const onlineLink = document.getElementById('bookingOnline');
+        const instaLink = document.getElementById('bookingInsta');
+        if (onlineLink) { onlineLink.removeAttribute('href'); onlineLink.style.display = 'none'; }
+        if (instaLink) { instaLink.removeAttribute('href'); instaLink.style.display = 'none'; }
+        const title = document.getElementById('bookingTitle');
+        const sub = document.getElementById('bookingSub');
+        if (title) title.textContent = 'Book';
+        if (sub) sub.textContent = '';
+    }
+
+    function hideBookingOptions() {
+        if (bookingOptionsEl) bookingOptionsEl.style.display = 'none';
+        // Clear links to avoid stale hrefs when user returns via back/forward
+        resetBookingLinks();
+    }
+
     const bookingCloseEl = document.getElementById('bookingClose');
     if (bookingCloseEl) bookingCloseEl.addEventListener('click', function() { hideBookingOptions(); });
     if (bookingOptionsEl) bookingOptionsEl.addEventListener('click', function(e) { if (e.target === this) hideBookingOptions(); });
+
+    // Also clear and hide modal whenever the document becomes visible again (user returns tab)
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible') hideBookingOptions();
+    });
 
         // If the user navigates away (opens a link) and then comes back via browser back or focus,
         // ensure the modal is hidden so the page returns to a normal state.
