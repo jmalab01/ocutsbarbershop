@@ -82,8 +82,11 @@
         }
         .page-hero-label {
             font-family: 'Bebas Neue','Anton','Impact','Arial Black',sans-serif;
-            font-size: 1.2rem; letter-spacing: 6px; color: #d31111;
+            font-size: clamp(0.72rem, 3.5vw, 1.2rem);
+            letter-spacing: clamp(2px, 1.2vw, 6px);
+            color: #d31111;
             text-transform: uppercase; margin-bottom: 10px;
+            white-space: nowrap;
         }
         .page-hero-title {
             font-family: 'Bebas Neue','Anton','Impact','Arial Black',sans-serif;
