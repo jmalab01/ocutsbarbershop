@@ -241,12 +241,12 @@
         }
         #lightbox.open { display: flex; }
         #lightbox-img {
-            width: auto; height: auto;
-            max-width: min(80vw, 680px);
-            max-height: 78vh;
+            width: min(80vw, 600px);
+            height: min(78vh, 750px);
             border-radius: 16px;
             box-shadow: 0 8px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(211,17,17,0.2);
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center top;
             animation: lbFadeIn 0.3s ease;
             display: block;
             background: #111;
@@ -301,7 +301,7 @@
         }
         @media (max-width: 600px) {
             #lightbox { padding: 56px 8px 16px; }
-            #lightbox-img { max-width: 98vw; max-height: 66vh; border-radius: 10px; }
+            #lightbox-img { width: 96vw; height: 66vh; border-radius: 10px; }
             /* Hide side arrows, show bottom bar */
             #lightbox-prev, #lightbox-next { display: none; }
             #lightbox-controls { display: flex; }
