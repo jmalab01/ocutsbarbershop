@@ -690,8 +690,8 @@
         document.getElementById('prevSlide').addEventListener('click', function() { goTo(current - 1); });
         document.getElementById('nextSlide').addEventListener('click', function() { goTo(current + 1); });
 
-        // Auto-advance every 4s
-        function startAuto() { autoTimer = setInterval(function() { goTo(current + 1); }, 4000); }
+        // Auto-advance every 30s
+        function startAuto() { autoTimer = setInterval(function() { goTo(current + 1); }, 30000); }
         function resetAuto() { clearInterval(autoTimer); startAuto(); }
         startAuto();
 
