@@ -892,7 +892,11 @@
                 if (book && book.toString().trim() !== '') links.push({ href: book, type: 'book' });
                 if (insta && insta.toString().trim() !== '') links.push({ href: insta, type: 'insta' });
                 if (links.length === 1) {
-                    // open the single link in a new tab and do not show modal
+                    // Suppress the modal briefly so when the user returns the modal doesn't flash
+                    function setSuppress(ms) { try { sessionStorage.setItem('ocuts_modal_suppress_until', Date.now() + ms); } catch (e) {} }
+                    setSuppress(1500);
+                    // ensure modal is hidden and links cleared, then open the single link
+                    hideBookingOptions();
                     window.open(links[0].href, '_blank', 'noopener');
                     return;
                 }
@@ -930,9 +934,17 @@
     if (bookingOptionsEl) bookingOptionsEl.addEventListener('click', function(e) { if (e.target === this) hideBookingOptions(); });
 
     // Also clear and hide modal whenever the document becomes visible again (user returns tab)
+    function isSuppressed() { try { const v = sessionStorage.getItem('ocuts_modal_suppress_until'); return v && Date.now() < Number(v); } catch(e) { return false; } }
     document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'visible') hideBookingOptions();
+        if (document.visibilityState === 'visible') {
+            // if suppressed, still ensure modal is hidden but do not re-initialize anything
+            hideBookingOptions();
+            // clear suppression if it expired
+            try { const v = sessionStorage.getItem('ocuts_modal_suppress_until'); if (!v || Date.now() >= Number(v)) sessionStorage.removeItem('ocuts_modal_suppress_until'); } catch(e) {}
+        }
     });
+    // Also hide/reset on focus (some browsers trigger focus instead of visibilitychange)
+    window.addEventListener('focus', function() { hideBookingOptions(); try { const v = sessionStorage.getItem('ocuts_modal_suppress_until'); if (!v || Date.now() >= Number(v)) sessionStorage.removeItem('ocuts_modal_suppress_until'); } catch(e) {} });
 
         // If the user navigates away (opens a link) and then comes back via browser back or focus,
         // ensure the modal is hidden so the page returns to a normal state.
