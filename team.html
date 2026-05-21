@@ -237,7 +237,7 @@
             background: rgba(0,0,0,0.97);
             align-items: center; justify-content: center;
             flex-direction: column;
-            padding: 70px 64px 50px;
+            padding: 70px 72px 50px;
         }
         #lightbox.open { display: flex; }
         #lightbox-img {
@@ -261,27 +261,56 @@
             display: flex; align-items: center; justify-content: center;
         }
         #lightbox-close:hover { opacity: 1; }
+        /* Side arrows — desktop only */
         #lightbox-prev, #lightbox-next {
             position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(211,17,17,0.22); border: 1px solid rgba(211,17,17,0.45);
-            color: #fff; width: 44px; height: 44px; border-radius: 50%;
-            font-size: 1.2rem; cursor: pointer;
+            background: rgba(211,17,17,0.22); border: 2px solid rgba(211,17,17,0.5);
+            color: #fff; width: 52px; height: 52px; border-radius: 50%;
+            font-size: 1.4rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, transform 0.15s;
+            flex-shrink: 0;
+        }
+        #lightbox-prev { left: 14px; }
+        #lightbox-next { right: 14px; }
+        #lightbox-prev:hover, #lightbox-next:hover {
+            background: rgba(211,17,17,0.6);
+            transform: translateY(-50%) scale(1.1);
+        }
+        /* Bottom controls bar */
+        #lightbox-controls {
+            display: none;
+            align-items: center; justify-content: center;
+            gap: 24px; margin-top: 20px; width: 100%;
+        }
+        #lightbox-prev-mobile, #lightbox-next-mobile {
+            background: rgba(211,17,17,0.22); border: 2px solid rgba(211,17,17,0.5);
+            color: #fff; width: 60px; height: 60px; border-radius: 50%;
+            font-size: 1.6rem; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: background 0.2s;
             flex-shrink: 0;
         }
-        #lightbox-prev { left: 10px; }
-        #lightbox-next { right: 10px; }
-        #lightbox-prev:hover, #lightbox-next:hover { background: rgba(211,17,17,0.55); }
-        #lightbox-counter {
-            margin-top: 16px; font-size: 0.85rem; letter-spacing: 3px;
-            color: rgba(255,255,255,0.55); font-family: 'Bebas Neue','Anton',sans-serif;
+        #lightbox-prev-mobile:active, #lightbox-next-mobile:active {
+            background: rgba(211,17,17,0.7);
         }
-        @media (max-width: 480px) {
-            #lightbox-img { max-width: 92vw; max-height: 68vh; }
-            #lightbox-prev { left: 6px; }
-            #lightbox-next { right: 6px; }
-            #lightbox { padding: 56px 48px 32px; }
+        #lightbox-counter {
+            font-size: 1rem; letter-spacing: 3px;
+            color: rgba(255,255,255,0.6); font-family: 'Bebas Neue','Anton',sans-serif;
+            min-width: 48px; text-align: center;
+        }
+        @media (max-width: 600px) {
+            #lightbox { padding: 60px 16px 24px; }
+            #lightbox-img { max-width: 96vw; max-height: 62vh; }
+            /* Hide side arrows, show bottom bar */
+            #lightbox-prev, #lightbox-next { display: none; }
+            #lightbox-controls { display: flex; }
+            #lightbox-prev-mobile, #lightbox-next-mobile { width: 68px; height: 68px; font-size: 1.8rem; }
+        }
+        @media (min-width: 601px) {
+            /* Hide bottom bar on desktop, show side arrows */
+            #lightbox-controls { display: none !important; }
+            #lightbox-prev, #lightbox-next { display: flex; }
         }
 
         /* dots & arrows */
@@ -712,8 +741,12 @@
         <button id="lightbox-close" aria-label="Close">&times;</button>
         <button id="lightbox-prev" aria-label="Previous">&#8592;</button>
         <img id="lightbox-img" src="" alt="Barber work">
-        <div id="lightbox-counter"></div>
         <button id="lightbox-next" aria-label="Next">&#8594;</button>
+        <div id="lightbox-controls">
+            <button id="lightbox-prev-mobile" aria-label="Previous">&#8592;</button>
+            <div id="lightbox-counter"></div>
+            <button id="lightbox-next-mobile" aria-label="Next">&#8594;</button>
+        </div>
     </div>
 
     <script>
@@ -755,6 +788,8 @@
         document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
         document.getElementById('lightbox-prev').addEventListener('click', prevImage);
         document.getElementById('lightbox-next').addEventListener('click', nextImage);
+        document.getElementById('lightbox-prev-mobile').addEventListener('click', prevImage);
+        document.getElementById('lightbox-next-mobile').addEventListener('click', nextImage);
 
         lb.addEventListener('click', function(e) {
             if (e.target === lb) closeLightbox();
