@@ -859,10 +859,13 @@
         var lbCounter = document.getElementById('lightbox-counter');
         var currentImages = [];
         var currentIndex = 0;
+        var currentBarber = '';
+        var coverBarbers = ['naseem', 'arsen'];
 
-        function openLightbox(images, startIndex) {
+        function openLightbox(images, startIndex, barber) {
             currentImages = images;
             currentIndex = startIndex;
+            currentBarber = barber || '';
             showImage();
             lb.classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -876,6 +879,15 @@
         function showImage() {
             lbImg.src = currentImages[currentIndex];
             lbCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            if (coverBarbers.indexOf(currentBarber) !== -1) {
+                lbImg.style.objectFit = 'cover';
+                lbImg.style.width = 'min(90vw, 700px)';
+                lbImg.style.height = 'min(80vh, 750px)';
+            } else {
+                lbImg.style.objectFit = 'contain';
+                lbImg.style.width = 'auto';
+                lbImg.style.height = 'auto';
+            }
         }
 
         function prevImage() {
@@ -913,7 +925,7 @@
                 if (!gallery) return;
                 var srcs = Array.from(gallery.querySelectorAll('.work-gallery-item img')).map(function(img) { return img.src; });
                 var currentIdx = parseInt(btn.getAttribute('data-rotate-index') || '0', 10);
-                openLightbox(srcs, currentIdx);
+                openLightbox(srcs, currentIdx, target);
             });
         });
 
