@@ -195,6 +195,44 @@
         }
         .team-card-btn:hover { transform: translateY(-2px); opacity: 0.92; }
 
+        /* ── BARBER WORK GALLERY (inside a team card) ── */
+        .work-gallery-label {
+            font-family: 'Bebas Neue','Anton','Impact','Arial Black',sans-serif;
+            font-size: 0.72rem; letter-spacing: 4px; color: #d31111;
+            text-transform: uppercase; margin: 18px 0 10px;
+        }
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .work-gallery-item {
+            position: relative; overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 3 / 4;
+            border: 1px solid rgba(211,17,17,0.15);
+            background: #0d0d0d;
+            cursor: pointer;
+        }
+        .work-gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            display: block;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        .work-gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1.1);
+        }
+        .work-gallery-item::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.45) 100%);
+            pointer-events: none;
+        }
+
         /* dots & arrows */
         .slide-nav {
             display: flex; align-items: center; justify-content: center;
@@ -419,6 +457,18 @@
                         </div>
                         <div class="team-card-name">Randy</div>
                         <div class="team-card-role">Barber · Ocuts</div>
+                        <div class="work-gallery-label">✂ Recent Work</div>
+                        <div class="work-gallery">
+                            <div class="work-gallery-item">
+                                <img src="https://i.postimg.cc/2SF5fv9w/DSC02201.jpg" alt="Randy's Work" loading="lazy">
+                            </div>
+                            <div class="work-gallery-item">
+                                <img src="https://i.postimg.cc/KY0v1b2D/IMG-6199.jpg" alt="Randy's Work" loading="lazy">
+                            </div>
+                            <div class="work-gallery-item">
+                                <img src="https://i.postimg.cc/HxKYttjg/DSC00053.jpg" alt="Randy's Work" loading="lazy">
+                            </div>
+                        </div>
                         <a class="team-card-btn" href="https://booksy.com/en-us/1775190_randy-barbero_barber-shop_21078_louisville?do=invite&_branch_match_id=1547343545126338391&utm_medium=profile_share_from_registration&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVD3DKz8%2Fw8stOM06yrytKTUstKsrMS49PKsovL04tsg1OTEssygQAQa7ZCzwAAAA%3D" target="_blank" rel="noopener noreferrer">Book Now</a>
                     </div>
                 </div>
