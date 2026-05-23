@@ -1,0 +1,75 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "barbers"
+    label: "Barber Photos"
+    files:
+      - name: "all_photos"
+        label: "All Barber Photos"
+        file: "data/barbers.json"
+        fields:
+          - name: omar
+            label: "Omar"
+            widget: object
+            fields:
+              - name: photos
+                label: Photos
+                widget: list
+                field:
+                  name: photo
+                  label: Photo URL
+                  widget: string
+                  hint: "Paste a photo URL from postimg.cc or upload below"
+
+          - name: arsen
+            label: "Arsen"
+            widget: object
+            fields:
+              - name: photos
+                label: Photos
+                widget: list
+                field:
+                  name: photo
+                  label: Photo URL
+                  widget: string
+
+          - name: naseem
+            label: "Naseem"
+            widget: object
+            fields:
+              - name: photos
+                label: Photos
+                widget: list
+                field:
+                  name: photo
+                  label: Photo URL
+                  widget: string
+
+          - name: randy
+            label: "Randy"
+            widget: object
+            fields:
+              - name: photos
+                label: Photos
+                widget: list
+                field:
+                  name: photo
+                  label: Photo URL
+                  widget: string
+
+          - name: nemo
+            label: "Nemo"
+            widget: object
+            fields:
+              - name: photos
+                label: Photos
+                widget: list
+                field:
+                  name: photo
+                  label: Photo URL
+                  widget: string
