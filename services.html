@@ -140,10 +140,10 @@
         }
         .service-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
             gap: 20px;
-            align-items: start;
-            margin: 28px 12px;
+            align-items: stretch;
+            margin: 28px 0;
             width: 100%;
             max-width: 1200px;
         }
@@ -158,14 +158,19 @@
             transition: transform 220ms ease, box-shadow 220ms ease;
             box-shadow: 0 6px 20px rgba(0,0,0,0.6), inset 0 -6px 20px rgba(211,17,17,0.02);
             border: 1px solid rgba(211,17,17,0.06);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .service-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.7), 0 6px 18px rgba(211,17,17,0.06);
         }
         .service-card img {
-            width: 160px;
-            height: 160px;
+            width: min(100%, 160px);
+            aspect-ratio: 1;
+            height: auto;
             object-fit: cover;
             object-position: center;
             border-radius: 50%;
@@ -178,6 +183,11 @@
             display: block;
         }
         .service-card:hover img { transform: scale(1.03); }
+        .service-card img.khalil-profile-photo {
+            object-position: center 68%;
+            transform: scale(1.1);
+        }
+        .service-card:hover img.khalil-profile-photo { transform: scale(1.14); }
         .service-card .instagram-link-wrapper { display: none; }
         .service-card .video-wrapper { display: none; }
         #omarRotatingImg {
@@ -214,6 +224,7 @@
             letter-spacing: 1px;
             border: none;
             box-shadow: 0 6px 18px rgba(211,17,17,0.12);
+            margin-top: auto;
         }
         .view-profile-btn:hover { transform: translateY(-2px); opacity: 0.98; }
         /* Ensure booking modal buttons match profile buttons typography */
@@ -266,15 +277,7 @@
             header img.logo {
                 height: 45px;
             }
-            .service-card {
-                width: 220px;
-                margin: 12px;
-                padding: 18px;
-            }
-            .service-card img {
-                width: 180px;
-                height: 180px;
-            }
+            .service-card { padding: 18px; }
             nav a {
                 padding: 12px 18px;
             }
@@ -307,16 +310,7 @@
             .content {
                 padding: 15px;
             }
-            .service-card {
-                width: 90%;
-                max-width: 320px;
-                margin: 12px auto;
-                padding: 20px;
-            }
-            .service-card img {
-                width: 200px;
-                height: 200px;
-            }
+            .service-card { padding: 18px; }
             .service-card h3 {
                 font-size: 1.3rem;
             }
@@ -366,15 +360,7 @@
             .content {
                 padding: 12px;
             }
-            .service-card {
-                width: 95%;
-                margin: 10px auto;
-                padding: 16px;
-            }
-            .service-card img {
-                width: 180px;
-                height: 180px;
-            }
+            .service-card { padding: 16px; }
             .service-card h3 {
                 font-size: 1.2rem;
             }
@@ -412,13 +398,7 @@
                 padding: 8px 12px;
                 font-size: 0.85rem;
             }
-            .service-card {
-                padding: 14px;
-            }
-            .service-card img {
-                width: 160px;
-                height: 160px;
-            }
+            .service-card { padding: 14px; }
             .service-card h3 {
                 font-size: 1.1rem;
             }
@@ -558,7 +538,7 @@
                 <button class="view-profile-btn" data-name="Nemo" data-book="https://app.thecut.co/barbers/63f3f6cce5bd7b7da6f175f5" data-instagram="https://www.instagram.com/cutsbyfish/">Book With Me</button>
             </div>
             <div class="service-card">
-                <img src="/data/khalil-cut-01.jpeg" alt="Khalil's haircut work" loading="lazy">
+                <img class="khalil-profile-photo" src="/data/khalil-cut-01.jpeg" alt="Khalil's haircut work" loading="lazy">
                 <h3>Khalil</h3>
                 <p>Ocuts Barbers</p>
                 <button class="view-profile-btn" data-name="Khalil" data-book="http://book.thecut.co/Khalil-Safarov-ks2990m">Book With Me</button>
