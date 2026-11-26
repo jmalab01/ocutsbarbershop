@@ -183,11 +183,27 @@
             display: block;
         }
         .service-card:hover img { transform: scale(1.03); }
-        .service-card img.khalil-profile-photo {
-            object-position: center 68%;
-            transform: scale(1.1);
+        .service-card .khalil-photo-crop {
+            width: min(100%, 160px);
+            aspect-ratio: 1;
+            margin: 6px auto 12px;
+            overflow: hidden;
+            border: 4px solid rgba(211,17,17,0.95);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+            flex: 0 0 auto;
         }
-        .service-card:hover img.khalil-profile-photo { transform: scale(1.14); }
+        .service-card .khalil-photo-crop img.khalil-profile-photo {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: 0;
+            border-radius: 50%;
+            box-shadow: none;
+            object-position: center 68%;
+            transform: scale(1.28);
+        }
+        .service-card:hover .khalil-photo-crop img.khalil-profile-photo { transform: scale(1.32); }
         .service-card .instagram-link-wrapper { display: none; }
         .service-card .video-wrapper { display: none; }
         #omarRotatingImg {
@@ -538,7 +554,9 @@
                 <button class="view-profile-btn" data-name="Nemo" data-book="https://app.thecut.co/barbers/63f3f6cce5bd7b7da6f175f5" data-instagram="https://www.instagram.com/cutsbyfish/">Book With Me</button>
             </div>
             <div class="service-card">
-                <img class="khalil-profile-photo" src="/data/khalil-cut-01.jpeg" alt="Khalil's haircut work" loading="lazy">
+                <div class="khalil-photo-crop">
+                    <img class="khalil-profile-photo" src="/data/khalil-cut-01.jpeg" alt="Khalil's haircut work" loading="lazy">
+                </div>
                 <h3>Khalil</h3>
                 <p>Ocuts Barbers</p>
                 <button class="view-profile-btn" data-name="Khalil" data-book="http://book.thecut.co/Khalil-Safarov-ks2990m">Book With Me</button>

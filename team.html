@@ -176,9 +176,19 @@
             object-fit: cover; object-position: center;
             display: block;
         }
-        .team-card-img-wrap img.khalil-profile-photo {
+        .team-card-img-wrap .khalil-photo-crop {
+            position: relative;
+            z-index: 1;
+            width: 180px;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+        .team-card-img-wrap .khalil-photo-crop img.khalil-profile-photo {
+            width: 100%;
+            height: 100%;
             object-position: center 68%;
-            transform: scale(1.1);
+            transform: scale(1.28);
         }
         .team-card-name {
             font-family: 'Bebas Neue','Anton','Impact','Arial Black',sans-serif;
@@ -624,7 +634,9 @@
                 <div class="slide">
                     <div class="team-card">
                         <div class="team-card-img-wrap">
-                            <img class="khalil-profile-photo" src="/data/khalil-cut-01.jpeg" alt="Khalil's haircut work" loading="lazy">
+                            <div class="khalil-photo-crop">
+                                <img class="khalil-profile-photo" src="/data/khalil-cut-01.jpeg" alt="Khalil's haircut work" loading="lazy">
+                            </div>
                         </div>
                         <div class="team-card-name">Khalil</div>
                         <div class="team-card-role">Barber · Ocuts</div>
