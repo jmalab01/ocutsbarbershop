@@ -34,5 +34,15 @@
       "https://i.postimg.cc/3K6DFM0C/IMG-6763.jpg",
       "https://i.postimg.cc/9XHRsGpT/IMG-6764.jpg"
     ]
+  },
+  "khalil": {
+    "photos": [
+      "/data/khalil-cut-01.jpeg",
+      "/data/khalil-cut-02.jpeg",
+      "/data/khalil-cut-03.jpeg",
+      "/data/khalil-cut-04.jpeg",
+      "/data/khalil-cut-05.jpeg",
+      "/data/khalil-cut-06.jpeg"
+    ]
   }
 }
